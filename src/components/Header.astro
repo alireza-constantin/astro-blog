@@ -1,6 +1,5 @@
 ---
 import ThemeToggle from "./ThemeToggle.astro";
-import Boo from '../assets/boo.webm'
 export const MENU_LINKS = [
 	{
 		title: "Home",
@@ -19,23 +18,16 @@ export const MENU_LINKS = [
 const url = new URL(Astro.request.url);
 ---
 
-<header
-	id="main-header"
-	class="group relative mb-28 flex justify-between items-center sm:ps-[4.5rem]"
->
+<header id="main-header" class="group relative mb-28 flex justify-between items-center">
 	<div class="flex items-center justify-between">
-		<a href="/" class="" aria-current={url.pathname === "/" ? "page" : false}>
-			<lottie-player
-				src="https://lottie.host/460b13fc-607e-4ae0-8513-c62ee4b1450c/6IUiNy3yVz.json"
-				speed="1"
-				loop
-				class="bg-transparent w-52 sm:grayscale hover:filter-none"
-				direction="1"
-				mode="normal"></lottie-player>
-				<!-- <video autoplay loop  class="grayscale hover:filter-none">
-					<source   src={Boo} type="video/webm" />
-				</video> -->
-		</a>
+		<lottie-player
+			src="https://lottie.host/460b13fc-607e-4ae0-8513-c62ee4b1450c/6IUiNy3yVz.json"
+			speed="1"
+			loop
+			class="bg-transparent cursor-pointer w-52 sm:grayscale hover:filter-none -mr-12 -ml-14"
+			direction="1"
+			mode="normal"></lottie-player>
+
 		<div class="flex flex-col">
 			<span class="hidden sm:block text-xl font-bold sm:text-2xl">Alireza Soheili</span>
 			<nav
@@ -102,10 +94,3 @@ const url = new URL(Astro.request.url);
 		</button>
 	</div>
 </header>
-
-<script>
-	// const video = document.querySelector('video');
-	// if(video) {
-	// 	video.playbackRate = 2
-	// }
-</script>

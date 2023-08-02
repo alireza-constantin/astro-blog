@@ -1,27 +1,30 @@
 ---
-
+import { DARK_THEME_COLOR, LIGHT_THEME_COLOR } from "src/utils/constant";
 ---
-
 {/* Inlined to avoid FOUC. */}
-<script>
+<script define:vars={{ DARK_THEME_COLOR, LIGHT_THEME_COLOR }}>
 	const root = document.documentElement;
 	const colorThemeMetaTag = document.querySelector("meta[name='theme-color']");
 	const storedTheme = typeof localStorage !== "undefined" && localStorage.getItem("theme");
 	const userTheme =
-		storedTheme || (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
-    console.log({storedTheme})
-    console.log({userTheme})
-        
-	function setTheme(theme: string) {
+		storedTheme ||
+		(window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+	console.log({ storedTheme });
+	console.log({ userTheme });
+
+	function setTheme(theme) {
 		root.classList.toggle("dark", theme === "dark");
-		colorThemeMetaTag && colorThemeMetaTag.setAttribute("content", theme === "dark" ? "#1d1f21" : "#fafafa");
+		colorThemeMetaTag &&
+			colorThemeMetaTag.setAttribute(
+				"content",
+				theme === "dark" ? DARK_THEME_COLOR : LIGHT_THEME_COLOR
+			);
 		if (typeof localStorage !== "undefined") {
 			localStorage.setItem("theme", theme);
 		}
 	}
 	setTheme(userTheme);
 	root.addEventListener("theme-change", (e) => {
-        console.log()
 		setTheme(e.detail.theme);
 	});
 </script>

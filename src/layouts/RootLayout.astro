@@ -2,6 +2,7 @@
 import Header from "@/components/Header";
 import '../styles/base.css'
 import ThemeProvider from "@/components/ThemeProvider";
+import { LIGHT_THEME_COLOR } from "src/utils/constant";
 ---
 
 <html lang="en">
@@ -10,6 +11,7 @@ import ThemeProvider from "@/components/ThemeProvider";
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="generator" content={Astro.generator} />
+		<meta name="theme-color" content={LIGHT_THEME_COLOR} />
 		<script defer src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 		<title>Astro</title>
 	</head>

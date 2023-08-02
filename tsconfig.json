@@ -6,7 +6,6 @@
 		"paths": {
 			"@/components/*": ["src/components/*.astro"],
 			"@/layouts/*": ["src/layouts/*.astro"],
-			"@/utils": ["src/utils/index.ts"],
 		}
 	},
 	"exclude": ["node_modules", "**/node_modules/*", ".vscode", "dist"]
