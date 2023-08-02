@@ -1,0 +1,27 @@
+---
+
+---
+
+{/* Inlined to avoid FOUC. */}
+<script>
+	const root = document.documentElement;
+	const colorThemeMetaTag = document.querySelector("meta[name='theme-color']");
+	const storedTheme = typeof localStorage !== "undefined" && localStorage.getItem("theme");
+	const userTheme =
+		storedTheme || (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+    console.log({storedTheme})
+    console.log({userTheme})
+        
+	function setTheme(theme: string) {
+		root.classList.toggle("dark", theme === "dark");
+		colorThemeMetaTag && colorThemeMetaTag.setAttribute("content", theme === "dark" ? "#1d1f21" : "#fafafa");
+		if (typeof localStorage !== "undefined") {
+			localStorage.setItem("theme", theme);
+		}
+	}
+	setTheme(userTheme);
+	root.addEventListener("theme-change", (e) => {
+        console.log()
+		setTheme(e.detail.theme);
+	});
+</script>

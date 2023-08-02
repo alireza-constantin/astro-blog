@@ -1,6 +1,7 @@
 ---
 import Header from "@/components/Header";
 import '../styles/base.css'
+import ThemeProvider from "@/components/ThemeProvider";
 ---
 
 <html lang="en">
@@ -13,6 +14,7 @@ import '../styles/base.css'
 		<title>Astro</title>
 	</head>
 	<body>
+		<ThemeProvider />
 		<Header />
 		<slot />
 	</body>
