@@ -6,7 +6,6 @@ interface Props {
 }
 
 const { post, withDesc = false } = Astro.props;
-console.log(post)
 const date = new Date(post.data.publishDate)
 const ISODate = date.toISOString();
 const formattedDate = date.toLocaleDateString("en-us", {

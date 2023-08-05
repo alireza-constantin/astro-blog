@@ -12,7 +12,7 @@ module.exports = {
 				"accent-2": "var(--theme-accent-2)",
 			},
 			animation: {
-				appear: "appear 2s ease-in forwards",
+				appear: "appear 1s ease-in forwards",
 			},
 			keyframes: {
 				appear: {
