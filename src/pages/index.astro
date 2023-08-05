@@ -1,23 +1,27 @@
 ---
 import Introduction from "@/components/Introduction";
 import RootLayout from "../layouts/RootLayout.astro";
+import { getCollection } from "astro:content";
+import PostPreview from "@/components/PostPreview";
 
+const allPosts = await getCollection("post")
+console.log(allPosts)
 ---
 
 <RootLayout>
 	<section>
 	<Introduction />
 	</section>
-	<section aria-label="Blog post list" class="mt-16">
+	<section aria-label="Blog post list" class="mt-16 pb-12">
 		<h2 class="title mb-4 text-xl">Posts</h2>
 		<ul class="space-y-4 sm:space-y-2">
-			<!-- {
-				allPostsByDate.map((p) => (
+			{
+				allPosts.map((p) => (
 					<li class="flex flex-col gap-x-2 sm:flex-row">
 						<PostPreview post={p} />
 					</li>
 				))
-			} -->
+			}
 		</ul>
 	</section>
 </RootLayout>

@@ -1,8 +1,7 @@
 ---
-title: "My Second Post"
-publishDate: "12 June 2022"
+title: "My First Post"
+publishDate: "5 August 2023"
 description: "Another example post for Astro Cactus, this time written in a plain markdown file"
-tags: ["example", "blog"]
 ---
 
 ## This is a post made with Markdown
@@ -12,4 +11,4 @@ tags: ["example", "blog"]
 function returnSeven() {
 	return 7;
 }
-```
+```1

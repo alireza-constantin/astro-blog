@@ -1,0 +1,24 @@
+---
+import type { CollectionEntry } from "astro:content";
+interface Props {
+	post: CollectionEntry<"post">;
+	withDesc?: boolean;
+}
+
+const { post, withDesc = false } = Astro.props;
+console.log(post)
+const date = new Date(post.data.publishDate)
+const ISODate = date.toISOString();
+const formattedDate = date.toLocaleDateString("en-us", {
+	day: "numeric",
+	month: "short",
+	year: "numeric",
+});
+---
+<time datetime={ISODate} class="min-w-[120px] text-gray-500">{formattedDate}</time>
+<div>
+	<a href={`/posts/${post.slug}/`} class="link" rel="prefetch">
+		{post.data.title}
+	</a>
+</div>
+<!-- {withDesc && <q class="line-clamp-3 block italic">{post.data.description}</q>} -->
