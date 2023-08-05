@@ -18,13 +18,15 @@ export const MENU_LINKS = [
 const url = new URL(Astro.request.url);
 ---
 
+<!-- boo --><!-- src="https://lottie.host/460b13fc-607e-4ae0-8513-c62ee4b1450c/6IUiNy3yVz.json" -->
 <header id="main-header" class="group relative mb-12 flex justify-between items-center">
 	<div class="flex items-center justify-between">
 		<lottie-player
-			src="https://lottie.host/460b13fc-607e-4ae0-8513-c62ee4b1450c/6IUiNy3yVz.json"
+			id="wizard"
+			src="https://lottie.host/72e74b27-5d84-46db-82db-af1245e7836c/Sg0zymalLv.json"
 			speed="1"
 			loop
-			class="bg-transparent cursor-pointer w-52 sm:grayscale hover:filter-none -mr-12 -ml-14"
+			class="bg-transparent cursor-pointer w-32 sm:grayscale hover:filter-none -mr-4 -ml-6"
 			direction="1"
 			mode="normal"></lottie-player>
 
@@ -97,7 +99,9 @@ const url = new URL(Astro.request.url);
 <script>
 	document.addEventListener("DOMContentLoaded", () => {
 		const header = document.getElementById("main-header") as HTMLElement;
-		const toggleMenuButton = document.getElementById("toggle-navigation-menu") as HTMLButtonElement;
+		const toggleMenuButton = document.getElementById(
+			"toggle-navigation-menu"
+		) as HTMLButtonElement;
 		let menuOpen = false;
 
 		toggleMenuButton.addEventListener("click", () => {
@@ -106,4 +110,12 @@ const url = new URL(Astro.request.url);
 			toggleMenuButton.setAttribute("aria-expanded", menuOpen.toString());
 		});
 	});
+	const wizardAnimation = document.getElementById("wizard")
+	if(wizardAnimation){
+		const showStarsEvent = new CustomEvent("show-stars")
+		wizardAnimation.addEventListener("click", () => {
+			document.documentElement.dispatchEvent(showStarsEvent)
+		})
+	}
+
 </script>

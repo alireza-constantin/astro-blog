@@ -4,9 +4,10 @@ import RootLayout from "../layouts/RootLayout.astro";
 import { getCollection } from "astro:content";
 import PostPreview from "@/components/PostPreview";
 import { sortPostsByDate } from '../utils/helpers'
+import { HOME_MAX_POST } from '../utils/constant'
 
 const allPosts = await getCollection("post")
-const sortedPosts = sortPostsByDate(allPosts)
+const sortedPosts = sortPostsByDate(allPosts).slice(0, HOME_MAX_POST)
 ---
 
 <RootLayout>

@@ -1,6 +1,6 @@
 ---
 import Header from "@/components/Header";
-import '../styles/base.css'
+import "../styles/base.css";
 import ThemeProvider from "@/components/ThemeProvider";
 import { LIGHT_THEME_COLOR } from "src/utils/constant";
 ---
@@ -12,12 +12,32 @@ import { LIGHT_THEME_COLOR } from "src/utils/constant";
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="theme-color" content={LIGHT_THEME_COLOR} />
-		<script defer src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+		<script
+			defer
+			src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"
+		></script>
 		<title>Astro</title>
 	</head>
 	<body>
+		<lottie-player
+			src="https://lottie.host/d4f0fd92-950f-4bb4-aa41-12d9382b3cff/1r8SpK8Mxj.json"
+			speed="1"
+			id="stars"
+			class="bg-transparent top-0 bottom-0 left-0 right-0 -z-10 absolute"
+			direction="1"
+			mode="normal"></lottie-player>
 		<ThemeProvider />
 		<Header />
 		<slot />
 	</body>
 </html>
+
+<script>
+	const animation = document.getElementById("stars") as HTMLVideoElement & { stop: () => void };
+	if (animation) {
+		document.documentElement.addEventListener("show-stars", () => {
+			animation.stop();
+			animation.play();
+		});
+	}
+</script>
