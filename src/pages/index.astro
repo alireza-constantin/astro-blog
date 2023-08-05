@@ -3,9 +3,10 @@ import Introduction from "@/components/Introduction";
 import RootLayout from "../layouts/RootLayout.astro";
 import { getCollection } from "astro:content";
 import PostPreview from "@/components/PostPreview";
+import { sortPostsByDate } from '../utils/helpers'
 
 const allPosts = await getCollection("post")
-console.log(allPosts)
+const sortedPosts = sortPostsByDate(allPosts)
 ---
 
 <RootLayout>
@@ -16,7 +17,7 @@ console.log(allPosts)
 		<h2 class="title mb-4 text-xl">Posts</h2>
 		<ul class="space-y-4 sm:space-y-2">
 			{
-				allPosts.map((p) => (
+				sortedPosts.map((p) => (
 					<li class="flex flex-col gap-x-2 sm:flex-row">
 						<PostPreview post={p} />
 					</li>

@@ -1,6 +1,6 @@
 ---
-title: "My newer Post"
-publishDate: "5 August 2023"
+title: "My Old Post"
+publishDate: "1 August 2023"
 description: "Another example post for Astro Cactus, this time written in a plain markdown file"
 ---
 
