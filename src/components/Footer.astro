@@ -1,6 +1,6 @@
 ---
 import { MENU_LINKS } from "@/utils/constant";
-
+import Resume from "../assets/Alireza_Soheili_Resume.pdf";
 const year = new Date().getFullYear();
 ---
 
@@ -26,5 +26,10 @@ const year = new Date().getFullYear();
 				</a>
 			))
 		}
+		<a
+			download
+			href={Resume}
+			class="px-4 py-2 sm:px-2 sm:py-0 sm:hover:text-textColor sm:hover:underline">Resume</a
+		>
 	</nav>
 </footer>

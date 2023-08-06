@@ -1,10 +1,10 @@
 ---
 import { MENU_LINKS } from "@/utils/constant";
 import ThemeToggle from "./ThemeToggle.astro";
+import Resume from "../assets/Alireza_Soheili_Resume.pdf";
 const url = new URL(Astro.request.url);
 ---
 
-<!-- boo --><!-- src="https://lottie.host/460b13fc-607e-4ae0-8513-c62ee4b1450c/6IUiNy3yVz.json" -->
 <header id="main-header" class="group relative mb-12 flex justify-between items-center">
 	<div class="flex items-center justify-between">
 		<lottie-player
@@ -16,8 +16,8 @@ const url = new URL(Astro.request.url);
 			direction="1"
 			mode="normal"></lottie-player>
 
-		<div class="flex flex-col h-[128px] items-center justify-center">
-			<span class="hidden sm:block text-xl font-bold sm:text-2xl">Alireza Soheili</span>
+		<div class="flex flex-col h-[128px]  justify-center">
+			<h4 class="hidden sm:block text-xl font-bold sm:text-2xl">Alireza Soheili</h4>
 			<nav
 				id="navigation-menu"
 				class="absolute -inset-x-4 top-32 hidden flex-col items-end gap-y-4 rounded-md bg-[--theme-menu-bg] py-4 text-accent shadow backdrop-blur group-[.menu-open]:z-50 group-[.menu-open]:flex sm:static sm:z-auto sm:-ms-4 sm:mt-1 sm:flex sm:flex-row sm:items-center sm:divide-x sm:divide-dashed sm:divide-accent sm:rounded-none sm:bg-transparent sm:py-0 sm:shadow-none sm:backdrop-blur-none"
@@ -35,6 +35,12 @@ const url = new URL(Astro.request.url);
 						</a>
 					))
 				}
+				<a
+					download
+					href={Resume}
+					class="px-4 py-4 sm:py-0 sm:hover:underline"
+					>Resume</a
+				>
 			</nav>
 		</div>
 	</div>
@@ -96,12 +102,11 @@ const url = new URL(Astro.request.url);
 			toggleMenuButton.setAttribute("aria-expanded", menuOpen.toString());
 		});
 	});
-	const wizardAnimation = document.getElementById("wizard")
-	if(wizardAnimation){
-		const showStarsEvent = new CustomEvent("show-stars")
+	const wizardAnimation = document.getElementById("wizard");
+	if (wizardAnimation) {
+		const showStarsEvent = new CustomEvent("show-stars");
 		wizardAnimation.addEventListener("click", () => {
-			document.documentElement.dispatchEvent(showStarsEvent)
-		})
+			document.documentElement.dispatchEvent(showStarsEvent);
+		});
 	}
-
 </script>
