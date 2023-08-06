@@ -29,9 +29,19 @@
 		@apply mx-auto flex h-full max-w-3xl flex-col bg-bgColor px-8 pt-16 font-mono text-sm font-normal text-textColor antialiased;
 	}
 
-	/* ::-webkit-scrollbar {
+	::-webkit-scrollbar {
+		width: 8px;
+	}
 
-	} */
+	::-webkit-scrollbar-thumb {
+		background-color: var(--theme-text);
+		border-radius: 20px;
+	}
+
+	::-webkit-scrollbar-track {
+		background-color: var(--theme-bg);
+		border-radius: 20px;
+	}
 
 	.link {
 		@apply underline decoration-2 underline-offset-2 hover:decoration-accent
