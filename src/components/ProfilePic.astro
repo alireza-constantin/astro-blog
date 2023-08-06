@@ -1,8 +1,4 @@
----
-import Profile from "../assets/profile.jpg";
----
-
-<div class="profile border-[3px] border-[#2d2e32] dark:border-gray-400">
+<div id="profile" class="profile transition-all border-[3px] border-textColor dark:border-gray-400">
 	<!-- <img src={Profile} class="profile" /> -->
 </div>
 
@@ -10,29 +6,59 @@ import Profile from "../assets/profile.jpg";
 	.profile {
 		background-position: 50%;
 		background-repeat: no-repeat;
-        background: url("../assets/profile.jpg");
+		background: url("../assets/profile.jpg");
 		background-size: cover;
-        filter: grayscale(1);
-		/* border: 3px solid #2d2e32; */
+		filter: grayscale(1);
 		border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
 		position: relative;
-        width: 15rem;
-        height: 15rem;
-		transition: all 1s ease-in-out;
-		animation: morph 7s ease-in-out infinite;
+		width: 15rem;
+		height: 15rem;
+		transition: all 2s ease-in-out;
+	}
+
+	.profile-animate {
+		animation: morph 5s ease-in-out infinite;
+		/* animation-fill-mode: forwards; */
 	}
 
 	@keyframes morph {
 		0% {
 			border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
+			/* border-radius: var(--first-border-radius); */
 		}
 
 		50% {
 			border-radius: 30% 60% 70% 40%/50% 60% 30% 60%;
+			/* border-radius: var(--second-border-radius); */
 		}
 
 		100% {
 			border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
+			/* border-radius: var(--first-border-radius); */
 		}
 	}
 </style>
+<script>
+	import { wait } from "@/utils/helpers";
+
+	const profilePic = document.getElementById("profile");
+
+	let firstTime = true;
+	if (profilePic) {
+		document.documentElement.addEventListener("show-stars", async () => {
+			// wait for two second that border radius get back to its first postions
+			// two second because when we add animation class suddenly it does not jump back
+			// - to keyframe 0 position and does it smoothly
+			// first time is for when we add animation for the first time it does not need
+			// to wait for two second
+			if (!profilePic.classList.contains("profile-animate") && !firstTime) {
+				profilePic.style.removeProperty("border-radius");
+				await wait(2);
+			}
+			firstTime = false;
+			const borderRadius = window.getComputedStyle(profilePic).borderRadius;
+			profilePic.style.borderRadius = borderRadius;
+			profilePic.classList.toggle("profile-animate");
+		});
+	}
+</script>
