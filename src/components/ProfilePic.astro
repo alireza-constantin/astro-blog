@@ -1,0 +1,38 @@
+---
+import Profile from "../assets/profile.jpg";
+---
+
+<div class="profile border-[3px] border-[#2d2e32] dark:border-gray-400">
+	<!-- <img src={Profile} class="profile" /> -->
+</div>
+
+<style>
+	.profile {
+		background-position: 50%;
+		background-repeat: no-repeat;
+        background: url("../assets/profile.jpg");
+		background-size: cover;
+        filter: grayscale(1);
+		/* border: 3px solid #2d2e32; */
+		border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
+		position: relative;
+        width: 15rem;
+        height: 15rem;
+		transition: all 1s ease-in-out;
+		animation: morph 7s ease-in-out infinite;
+	}
+
+	@keyframes morph {
+		0% {
+			border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
+		}
+
+		50% {
+			border-radius: 30% 60% 70% 40%/50% 60% 30% 60%;
+		}
+
+		100% {
+			border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
+		}
+	}
+</style>
