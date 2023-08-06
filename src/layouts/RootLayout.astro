@@ -2,6 +2,7 @@
 import Header from "@/components/Header";
 import "../styles/base.css";
 import ThemeProvider from "@/components/ThemeProvider";
+import Footer from "@/components/Footer";
 import { LIGHT_THEME_COLOR } from "src/utils/constant";
 ---
 
@@ -29,6 +30,7 @@ import { LIGHT_THEME_COLOR } from "src/utils/constant";
 		<ThemeProvider />
 		<Header />
 		<slot />
+		<Footer />
 	</body>
 </html>
 
