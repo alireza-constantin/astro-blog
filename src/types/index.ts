@@ -3,3 +3,11 @@ export interface CustomThemeEvent extends CustomEvent {
 		theme: string;
 	};
 }
+
+export type Project = {
+	title: string;
+	desc: string;
+	tools: string;
+	live: string | null;
+	code: string;
+};

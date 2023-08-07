@@ -1,11 +1,12 @@
 ---
-import Introduction from "@/components/Introduction";
+import Introduction from "@/components/intro/Introduction";
 import RootLayout from "@/layouts/RootLayout";
 import { getCollection } from "astro:content";
 import PostPreview from "@/components/PostPreview";
 import { sortPostsByDate } from "@/utils/helpers";
 import { HOME_MAX_POST } from "@/utils/constant";
-import ProfilePic from "@/components/ProfilePic";
+import ProfilePic from "@/components/intro/ProfilePic";
+import Projects from "@/components/Projects";
 
 const allPosts = await getCollection("post");
 const sortedPosts = sortPostsByDate(allPosts).slice(0, HOME_MAX_POST);
@@ -13,21 +14,28 @@ const sortedPosts = sortPostsByDate(allPosts).slice(0, HOME_MAX_POST);
 
 <RootLayout>
 	<section>
-		<div class="flex flex-col-reverse md:justify-between md:items-center gap-8 md:gap-4 md:flex-row">
+		<div
+			class="flex flex-col-reverse md:justify-between md:items-center gap-8 md:gap-4 md:flex-row"
+		>
 			<Introduction />
 			<ProfilePic />
 		</div>
 	</section>
 	<section aria-label="Blog post list" class="mt-16 pb-12">
-		<h2 class="title mb-4 text-xl">Posts</h2>
-		<ul class="space-y-4 sm:space-y-2">
-			{
-				sortedPosts.map((p) => (
-					<li class="flex flex-col gap-x-2 sm:flex-row">
-						<PostPreview post={p} />
-					</li>
-				))
-			}
-		</ul>
+		<div>
+			<h2 class="title mb-4 text-xl">Posts</h2>
+			<ul class="space-y-4 sm:space-y-2">
+				{
+					sortedPosts.map((p) => (
+						<li class="flex flex-col gap-x-2 sm:flex-row">
+							<PostPreview post={p} />
+						</li>
+					))
+				}
+			</ul>
+		</div>
+	</section>
+	<section class="mt-2 pb-12">
+		<Projects />
 	</section>
 </RootLayout>
