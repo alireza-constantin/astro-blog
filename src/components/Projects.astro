@@ -1,0 +1,44 @@
+---
+import ProjectPreview from "./ProjectPreview.astro";
+const projects = [
+	{
+		title: "iSupport",
+		desc: "I have developed a sophisticated and highly responsive ticket support application for Apple devices. The application incorporates robust signup and login functionalities, ensuring secure and authenticated access through the implementation of the JWT protocol. This application enables users to effortlessly create and manage support tickets while offering seamless communication with customer service team through an integrated chat feature.",
+		tools: "express, mongodb, jsonwebtoken, mongoose, react, tailwind, daisyUi, react-hook-form, react-redux",
+		live: "https://isupport-frontend.vercel.app/",
+		code: "https://github.com/alireza-constantin/isupport-frontend",
+	},
+	{
+		title: "Votey",
+		desc: "Votey leverages the full potential of Next.js as a powerful full-stack framework, delivering an simple user experience for creating and sharing polls. the polls feature an expiration time functionality, which enables precise control over the voting duration, ensuring that voting ceases automatically after the predefined period has elapsed. Seamlessly integrating type safety with the trpc backend library, we ensure a robust and reliable application that guarantees data integrity and reduces potential errors.",
+		tools: "Typescript, MySql, NextJs, Prisma, trpc, Tailwind, Framer-Motion",
+		live: "http://votey-one.vercel.app/",
+		code: "https://github.com/alireza-constantin/votey",
+	},
+	{
+		title: "ChitChat",
+		desc: "ChitChat is a chat application that offers real-time chat functionality. Powered by WebSockets, users can engage in dynamic conversations, experiencing instantaneous message delivery and interaction. Integrated user authentication with session management and Passport.js, ensuring a secure environment for users to connect and engage in real-time conversations.",
+		tools: "Typescript, Postgresql, Nestjs, Prisma, PassportJS, React, React-Router-Dom,Redux-Toolkit ,Tailwind, Framer-Motion",
+		live: null,
+		code: "https://github.com/alireza-constantin/chitchat-ui",
+	},
+	{
+		title: "Hulu Front Page Colon",
+		desc: "A near pixel perfect colon of Hulu front page website using html, vanilla css and javascript.",
+		tools: "HTML, CSS, Javascript",
+		live: "https://hulu-front-page.netlify.app/",
+		code: "https://github.com/alireza-constantin/Hulu-front-page-colon",
+	},
+	{
+		title: "Nexwt",
+		desc: "Nestjs and  nextjs starter template for jwt authentication. by combining the NestJS and Next.js frameworks. Leveraging NestJS for the server-side and Next.js for the client-side, I successfully implemented a robust authentication system using JWT tokens, including both access-token and refresh-token functionalities. The integration of Passport.js and Jotai as the state manager further enhances the app's security and state management capabilities, ensuring a smooth and efficient user experience throughout the application.",
+		tools: "Typescript, Nestjs, Postgres, Prisma, Next 13, Tailwind, Jotai",
+		live: null,
+		code: "https://github.com/alireza-constantin/nest-next-jwt-refresh",
+	},
+];
+---
+<h2 class="title mb-4 text-xl">Projects</h2>
+<div class="flex flex-col gap-4">
+	{projects.map((project) => <ProjectPreview project={project} />)}
+</div>
