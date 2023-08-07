@@ -11,7 +11,7 @@ const { project } = Astro.props;
 <div class="border-[3px] p-4 rounded-2xl border-textColor dark:border-gray-400">
 	<h4 class="text-lg font-medium mb-1">{project.title}</h4>
 	<p class="text-sm dark:text-gray-400 text-gray-500 leading-normal mb-1">{project.desc}</p>
-	<p class="mb-3">Tools: {project.tools}</p>
+	<p class="mb-3 text-accent">Tools: {project.tools}</p>
 	<div class="flex items-center gap-4">
 		{
 			project.live && (
