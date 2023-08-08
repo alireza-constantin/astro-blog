@@ -1,15 +1,34 @@
 ---
-console.log('test')
-const canonicalURL = new URL(Astro.url.pathname, Astro.site)
+import { LIGHT_THEME_COLOR } from "@/utils/constant";
+import type { siteMeta } from "src/types";
+type Props = siteMeta;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const {  description, title } = Astro.props;
+const siteTitle = `${title} • alirezasoh.dev`;
 ---
 
 <meta charset="utf-8" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>to be added</title>
+<title>{siteTitle}</title>
 
 <!-- icon/favicon -->
 <link rel="icon" href="/favicon.ico" sizes="any" />
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 <link rel="manifest" href="/manifest.webmanifest" />
 <link rel="canonical" href={canonicalURL} />
+
+<!-- Primary Meta Tags -->
+<meta name="title" content={siteTitle} />
+<meta name="description" content={description} />
+<meta name="author" content="Alireza Soheili" />
+<meta name="theme-color" content={LIGHT_THEME_COLOR} />
+<meta name="generator" content={Astro.generator} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={canonicalURL} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<!-- to be added -->
+<!-- <meta property="twitter:image" content={socialImageURL} /> -->

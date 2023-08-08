@@ -14,6 +14,5 @@ export type Project = {
 
 export type siteMeta = {
 	title: string,
-	description: string,
-	articleDate: string
+	description?: string,
 }

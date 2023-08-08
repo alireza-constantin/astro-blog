@@ -3,15 +3,20 @@ import Header from "@/components/layout/Header";
 import "../styles/base.css";
 import ThemeProvider from "@/components/ThemeProvider";
 import Footer from "@/components/layout/Footer";
-import { LIGHT_THEME_COLOR } from "src/utils/constant";
 import BaseMeta from "@/components/layout/BaseMeta";
+import type { siteMeta } from "src/types";
+import { SITE_DESCRIPTION } from "@/utils/constant";
+
+interface Props {
+	meta: siteMeta
+}
+
+const { meta: { title, description = SITE_DESCRIPTION } } = Astro.props
 ---
 
 <html lang="en">
 	<head>
-		<BaseMeta />
-		<meta name="generator" content={Astro.generator} />
-		<meta name="theme-color" content={LIGHT_THEME_COLOR} />
+		<BaseMeta title={title} description={description} />
 		<script
 			defer
 			src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"
