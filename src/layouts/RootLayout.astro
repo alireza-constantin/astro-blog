@@ -4,13 +4,12 @@ import "../styles/base.css";
 import ThemeProvider from "@/components/ThemeProvider";
 import Footer from "@/components/layout/Footer";
 import { LIGHT_THEME_COLOR } from "src/utils/constant";
+import BaseMeta from "@/components/layout/BaseMeta";
 ---
 
 <html lang="en">
 	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<BaseMeta />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="theme-color" content={LIGHT_THEME_COLOR} />
 		<script

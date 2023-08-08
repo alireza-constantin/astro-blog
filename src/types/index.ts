@@ -11,3 +11,9 @@ export type Project = {
 	live: string | null;
 	code: string;
 };
+
+export type siteMeta = {
+	title: string,
+	description: string,
+	articleDate: string
+}
