@@ -1,5 +1,5 @@
 ---
-import RootLayout from "@/layouts/RootLayout";
+import PostLayout from "@/layouts/PostLayout";
 import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
 import { getCollection } from "astro:content";
 
@@ -17,6 +17,6 @@ const { post } = Astro.props;
 const { Content } = await post.render();
 ---
 
-<RootLayout meta={{ title: post.data.title, description: post.data.description }}>
+<PostLayout post={post}>
 	<Content />
 </RootLayout>
