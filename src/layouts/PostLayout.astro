@@ -16,7 +16,7 @@ const rootMeta = { title: post.data.title, description: post.data.description };
 		<article class="flex-grow break-words" data-pagefind-body>
 			<div id="blog-hero"><PostHero post={post.data} /></div>
 			<div
-				class="prose prose-sm prose-code:prose-sm prose-wiz mt-12 prose-headings:font-semibold prose-headings:before:absolute prose-headings:before:-ms-4 prose-headings:before:text-accent prose-headings:before:content-['#'] prose-th:before:content-none"
+				class="prose prose-pre:mt-0 prose-sm prose-code:prose-sm prose-wiz mt-12 prose-headings:font-semibold prose-headings:before:absolute prose-headings:before:-ms-4 prose-headings:before:text-accent prose-headings:before:content-['#'] prose-th:before:content-none"
 			>
 				<slot />
 			</div>

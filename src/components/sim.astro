@@ -1,0 +1,27 @@
+---
+interface Props {
+    lang: string
+}
+const { lang } = Astro.props
+---
+
+<div id="wrapper" class="bg-[#161821] mt-4 rounded">
+    <div class="flex justify-between items-center px-4 h-8" >
+        <p class="text-base">{lang}</p>
+        <button id="cb">Copy</button>
+    </div>
+    <slot />
+</div>
+
+<script>
+    const btn = document.querySelector('#cb')
+    const wrapper = document.getElementById('wrapper')
+    console.log(btn)
+    btn?.addEventListener('click', () => {
+        const codes = wrapper.getElementsByTagName('code')
+        const blob = new Blob([codes.item(0)?.textContent], { type: 'text/plain' })
+        const copy = new ClipboardItem({ 'text/plain':  blob})
+        console.log(JSON.stringify(copy))
+        navigator.clipboard.write([copy])
+    })
+</script>

@@ -3,9 +3,14 @@ title: "My Old Post"
 publishDate: "1 August 2023"
 description: "Another example post for Astro Cactus, this time written in a plain markdown file"
 ---
+import Sim from '../../components/sim.astro'
+
 
 ## This is a post made with Markdown
 
+
+
+<Sim lang="javascript">
 ```js
 // Example JavaScript
 function returnSeven() {
@@ -34,3 +39,4 @@ export default defineConfig({
   prefetch()]
 });
 ```
+</Sim>
