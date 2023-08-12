@@ -1,27 +1,44 @@
 ---
 interface Props {
-    lang: string
+	lang: string;
 }
-const { lang } = Astro.props
+const { lang } = Astro.props;
 ---
 
 <div id="wrapper" class="bg-[#161821] mt-4 rounded">
-    <div class="flex justify-between items-center px-4 h-8" >
-        <p class="text-base">{lang}</p>
-        <button id="cb">Copy</button>
-    </div>
-    <slot />
+	<div class="flex justify-between items-center px-4 h-8">
+		<p class="text-base">{lang}</p>
+		<button id="cb">Copy</button>
+	</div>
+	<slot />
 </div>
 
 <script>
-    const btn = document.querySelector('#cb')
-    const wrapper = document.getElementById('wrapper')
-    console.log(btn)
-    btn?.addEventListener('click', () => {
-        const codes = wrapper.getElementsByTagName('code')
-        const blob = new Blob([codes.item(0)?.textContent], { type: 'text/plain' })
-        const copy = new ClipboardItem({ 'text/plain':  blob})
-        console.log(JSON.stringify(copy))
-        navigator.clipboard.write([copy])
-    })
+	const btn = document.querySelector("#cb");
+	const wrapper = document.getElementById("wrapper");
+	document.documentElement.addEventListener("click", (e) => {
+		// console.log('hello')
+		const target = e.target as HTMLButtonElement;
+		if (e.target && e.target.nodeName == "BUTTON" && e.target.id === "cb") {
+			const parent = target.parentElement;
+			if (parent) {
+				const codeEl = parent.nextElementSibling?.firstChild?.textContent;
+				if (codeEl) {
+					const blob = new Blob([codeEl], { type: "text/plain" });
+					const copy = new ClipboardItem({ "text/plain": blob });
+					console.log(JSON.stringify(copy));
+					navigator.clipboard.write([copy]);
+				}
+			}
+		}
+	});
+
+	// btn?.addEventListener('click', () => {
+	//     console.log('hello')
+	//     const codes = wrapper.getElementsByTagName('code')
+	//     const blob = new Blob([codes.item(0)?.textContent], { type: 'text/plain' })
+	//     const copy = new ClipboardItem({ 'text/plain':  blob})
+	//     console.log(JSON.stringify(copy))
+	//     navigator.clipboard.write([copy])
+	// })
 </script>
