@@ -11,4 +11,26 @@ description: "Another example post for Astro Cactus, this time written in a plai
 function returnSeven() {
 	return 7;
 }
-```1
+
+import { defineConfig } from 'astro/config';
+
+import tailwind from "@astrojs/tailwind";
+import prefetch from "@astrojs/prefetch"
+
+// https://astro.build/config
+export default defineConfig({
+  // change it with actual site url in prod
+  site:"http://localhost:3000",
+  markdown: {
+    shikiConfig: {
+      theme: 'material-theme-palenight',
+      
+    }
+  },
+  integrations: [tailwind({
+    applyBaseStyles: true,
+    configFile: './tailwind.config.cjs'
+  }),
+  prefetch()]
+});
+```
