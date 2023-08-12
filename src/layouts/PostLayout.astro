@@ -49,7 +49,6 @@ const rootMeta = { title: post.data.title, description: post.data.description };
 
 	function callback(entries: IntersectionObserverEntry[]) {
 		entries.forEach((entry) => {
-            console.log(entry)
 			// only show the scroll to top button when the heading is out of view
 			scrollBtn.dataset.show = (!entry.isIntersecting).toString();
 		});

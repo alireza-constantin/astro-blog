@@ -14,31 +14,23 @@ const { lang } = Astro.props;
 </div>
 
 <script>
-	const btn = document.querySelector("#cb");
-	const wrapper = document.getElementById("wrapper");
 	document.documentElement.addEventListener("click", (e) => {
-		// console.log('hello')
 		const target = e.target as HTMLButtonElement;
-		if (e.target && e.target.nodeName == "BUTTON" && e.target.id === "cb") {
+		if (target && target.nodeName == "BUTTON" && target.id === "cb") {
 			const parent = target.parentElement;
 			if (parent) {
 				const codeEl = parent.nextElementSibling?.firstChild?.textContent;
 				if (codeEl) {
 					const blob = new Blob([codeEl], { type: "text/plain" });
 					const copy = new ClipboardItem({ "text/plain": blob });
-					console.log(JSON.stringify(copy));
-					navigator.clipboard.write([copy]);
+					navigator.clipboard.write([copy]).then(() => {
+                        const customEvent = new CustomEvent('open-toast')
+                        document.documentElement.dispatchEvent(customEvent)
+                    })
+
 				}
 			}
 		}
 	});
 
-	// btn?.addEventListener('click', () => {
-	//     console.log('hello')
-	//     const codes = wrapper.getElementsByTagName('code')
-	//     const blob = new Blob([codes.item(0)?.textContent], { type: 'text/plain' })
-	//     const copy = new ClipboardItem({ 'text/plain':  blob})
-	//     console.log(JSON.stringify(copy))
-	//     navigator.clipboard.write([copy])
-	// })
 </script>

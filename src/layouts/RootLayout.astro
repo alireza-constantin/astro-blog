@@ -3,6 +3,7 @@ import Header from "@/components/layout/Header";
 import "../styles/base.css";
 import ThemeProvider from "@/components/ThemeProvider";
 import Footer from "@/components/layout/Footer";
+import Toast from "@/components/Toast";
 import BaseMeta from "@/components/layout/BaseMeta";
 import type { siteMeta } from "src/types";
 import { SITE_DESCRIPTION } from "@/utils/constant";
@@ -23,7 +24,8 @@ const { meta: { title, description = SITE_DESCRIPTION } } = Astro.props
 		></script>
 		<title>Astro</title>
 	</head>
-	<body>
+	<body class="relative">
+	<Toast />
 		<lottie-player
 			src="https://lottie.host/d4f0fd92-950f-4bb4-aa41-12d9382b3cff/1r8SpK8Mxj.json"
 			speed="1"
