@@ -11,7 +11,7 @@ export const getStaticPaths = (async ({ paginate }) => {
 	const allPosts = await getCollection("post");
 	const allPostsByDate = sortPostsByDate(allPosts);
     console.log('static',allPostsByDate)
-	return paginate(allPostsByDate, { pageSize: 2 });
+	return paginate(allPostsByDate, { pageSize: 10 });
 }) satisfies GetStaticPaths;
 
 interface Props {
@@ -50,7 +50,7 @@ const paginationProps = {
 				{
 					page.data.map((p) => (
 						<li class="flex flex-col flex-wrap gap-2 sm:flex-row [&_q]:basis-full">
-							<PostPreview post={p} />
+							<PostPreview post={p} withDesc />
 						</li>
 					))
 				}
