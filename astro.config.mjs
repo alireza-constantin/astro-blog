@@ -17,5 +17,8 @@ export default defineConfig({
   integrations: [tailwind({
     applyBaseStyles: true,
     configFile: './tailwind.config.cjs'
-  }), prefetch(), mdx()]
+  }), prefetch(), mdx()],
+  experimental: {
+    assets: true
+  }
 });

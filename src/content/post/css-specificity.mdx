@@ -1,0 +1,68 @@
+---
+title: "CSS Specificity"
+publishDate: "13 August 2023"
+description: "Understanding the Power of Selector Priority"
+---
+import PreHeader from '../../components/PreTagHeader.astro'
+import cssSpe1 from '../../assets/css-spe-1.png'
+import { Image } from 'astro:assets'
+
+
+## Why CSS Specificity is Important
+
+CSS specificity is important because it helps to prevent conflicts between CSS declarations. When there are multiple declarations that could apply to an element, the declaration with the highest specificity wins. This ensures that only one declaration is applied to an element, and that the correct declaration is applied.
+
+
+## What is CSS Specificity?
+
+CSS specificity is an algorithm that determines which CSS declaration is applied to an element when there are multiple declarations that could apply. The declaration with the highest specificity wins.
+
+## How CSS Specificity Works
+
+The specificity algorithm works by assigning a weight to each type of selector. The weights are as follows:
+
+Inline styles: 1000
+IDs: 100
+Classes: 10
+Elements: 1
+The specificity of a selector is calculated by adding up the weights of the different types of selectors it uses. For example, the selector #my-id .my-class has a specificity of 110, because it uses an ID selector (100) and a class selector (10).
+
+If these two selectors were applied to the same element, the selector with higher specificity wins.
+
+If two selectors have the same specificity, the selector that comes first in the CSS file wins.
+
+Maybe this diagram help you understand better
+
+<Image src={cssSpe1} alt="image" quality="max" />
+
+## How to Use CSS Specificity Effectively
+
+- **Use inline styles sparingly**
+
+	Inline styles have the highest specificity, so they can easily override other CSS declarations. Only use inline styles when you need to override a specific declaration
+
+- **Avoiding Overly Specific Selectors**
+
+	Opt for simpler selectors whenever possible
+
+- **Using BEM Methodology**
+
+	Block-Element-Modifier (BEM) is a naming convention
+
+- **Leveraging Inheritance**
+
+	Leverage the inheritance nature of CSS properties
+
+- **The :is(), :not() and :has() exceptions**
+
+	The matches-any pseudo-class :is(), the relational pseudo-class :has(), and the negation pseudo-class :not() are not considered as pseudo-classes in the specificity weight calculation. They don't carry their own weight in the calculation. But, the stuff we put inside them still matters for figuring out how specific something is.
+
+## Additional Resources
+
+
+<a class="link block" href="https://www.w3schools.com/css/css_specificity.asp">CSS Specificity Tutorial</a> 
+
+<a class="link block" href="https://css-tricks.com/specifics-on-css-specificity/">CSS Specificity Cheat Sheet</a>
+
+
+<a class="link block" href="https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity">Understanding CSS Specificity</a>
