@@ -14,9 +14,9 @@ const rootMeta = { title: post.data.title, description: post.data.description };
 <RootLayout meta={rootMeta}>
 	<div class="gap-x-10 lg:flex lg:items-start">
 		<article class="flex-grow break-words" data-pagefind-body>
-			<div id="blog-hero"><PostHero post={post.data} /></div>
+			<div id="blog-hero" class="border-b-2 border-accent border-spacing-8"><PostHero post={post.data} /></div>
 			<div
-				class="prose prose-pre:mt-0 prose-sm prose-code:prose-sm prose-wiz mt-12 prose-headings:font-semibold prose-headings:before:absolute prose-headings:before:-ms-4 prose-headings:before:text-accent prose-headings:before:content-['#'] prose-th:before:content-none"
+				class="prose prose-pre:mt-0 prose-sm md:prose-base prose-code:prose-sm prose-wiz mt-8 prose-headings:font-semibold prose-headings:before:absolute md:prose-headings:before:-ms-5 prose-headings:before:-ms-4 prose-headings:before:text-accent prose-headings:before:content-['#'] prose-th:before:content-none"
 			>
 				<slot />
 			</div>
