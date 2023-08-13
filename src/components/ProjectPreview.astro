@@ -11,7 +11,7 @@ const { project } = Astro.props;
 <accordion-header
 	id="accordion-header"
 	aria-expanded="false"
-	class="group border-[3px] p-4 rounded-2xl border-textColor dark:border-gray-400"
+	class="group border-[3px] opacity-0 p-4 rounded-2xl border-textColor dark:border-gray-400"
 >
 	<div class="flex items-center justify-between border-b-[1px] border-gray-500">
 		<p class="text-lg font-medium mb-1">{project.title}</p>
@@ -96,8 +96,6 @@ const { project } = Astro.props;
 </accordion-header>
 
 <script>
-	const acc = document.getElementById("accordion-header");
-	const checkbox = document.querySelector("input[type=checkbox]");
 	let expanded = false;
 
 	class AccordionHeader extends HTMLElement {
@@ -113,14 +111,19 @@ const { project } = Astro.props;
 				},
 				true
 			);
+
+			const observer = new IntersectionObserver(entries => {
+				entries.forEach((entry) => {
+					if(entry.isIntersecting){
+						entry.target.classList.add('animate-appearX')
+					}
+				})
+			})
+
+			observer.observe(this)
 		}
 	}
 
 	customElements.define("accordion-header", AccordionHeader);
 
-	// console.log(checkbox)
-	// checkbox?.addEventListener('change', () => {
-	// 	expanded = !expanded
-	// 	acc?.setAttribute('aria-expanded', String(expanded))
-	// }, true)
 </script>

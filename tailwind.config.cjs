@@ -16,6 +16,7 @@ module.exports = {
 			animation: {
 				appear: "appear 1s ease-in forwards",
 				toast: "toast 300ms ease-out forwards",
+				appearX: "appearX 700ms ease-in forwards",
 			},
 			keyframes: {
 				appear: {
@@ -26,10 +27,21 @@ module.exports = {
 					"0%": { opacity: "0", transform: "translateY(100px) translateX(50%)" },
 					"100%": { opacity: "1", transform: "translateY(0px) translateX(50%)" },
 				},
+				appearX: {
+					"0%": { opacity: "0", transform: "translateX(400px)" },
+					"65%": { opacity: "1", transform: "translateX(0px)" },
+					"70%": { opacity: "1", transform: "translateX(-30px)" },
+					"80%": { opacity: "1", transform: "translateX(-20px)" },
+					"80%": { opacity: "1", transform: "translateX(-20px)" },
+					"85%": { opacity: "1", transform: "translateX(-10px)" },
+					"90%": { opacity: "1", transform: "translateX(-10px)" },
+					"95%": { opacity: "1", transform: "translateX(-5px)" },
+					"100%": { opacity: "1", transform: "translateX(0)" },
+				},
 			},
 			fontFamily: {
-			    sans: [...fontFamily.sans],
-			    serif: [...fontFamily.serif],
+				sans: [...fontFamily.sans],
+				serif: [...fontFamily.serif],
 			},
 			typography: (theme) => ({
 				wiz: {
