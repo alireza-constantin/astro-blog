@@ -16,7 +16,7 @@ const { project } = Astro.props;
 		{
 			project.live && (
 				
-					<a href={project.live} class="hover:text-accent cursor-pointer" target="_blank">
+					<a href={project.live} class="hover:text-accent cursor-pointer" target="_blank" rel="noopener noreferrer">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							fill="none"
@@ -36,7 +36,7 @@ const { project } = Astro.props;
 				</p>
 			)
 		}
-			<a href={project.code} target="_blank" class="hover:text-accent cursor-pointer">
+			<a href={project.code} target="_blank" rel="noopener noreferrer" class="hover:text-accent cursor-pointer">
 				<svg
 					class="h-6 w-6"
 					aria-hidden="true"

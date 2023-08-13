@@ -8,6 +8,7 @@ import { HOME_MAX_POST } from "@/utils/constant";
 import ProfilePic from "@/components/intro/ProfilePic";
 import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
+import { SKILLS, LESS_FAMILIAR } from '@/utils/constant'
 
 const allPosts = await getCollection("post");
 const sortedPosts = sortPostsByDate(allPosts).slice(0, HOME_MAX_POST);
@@ -36,8 +37,9 @@ const sortedPosts = sortPostsByDate(allPosts).slice(0, HOME_MAX_POST);
 			</ul>
 		</div>
 	</section>
-	<section class="mt-2 max-w-2xl">
-		<Skills />
+	<section class="mt-2 max-w-2xl divide-y-2 divide-accent">
+		<Skills title="skills" skills={SKILLS} />
+		<Skills title="less-familiar" skills={LESS_FAMILIAR} />
 	</section>
 	<section class="mt-10 pb-12">
 		<Projects />

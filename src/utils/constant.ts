@@ -16,3 +16,27 @@ export const MENU_LINKS = [
 		path: "/posts/",
 	},
 ];
+export const SKILLS = [
+	"typescript",
+	"react",
+	"nextjs",
+	"Astro",
+	"tailwind",
+	"redux",
+	"zustand",
+	"react-query",
+];
+
+export const LESS_FAMILIAR = [
+	"nodejs",
+	"express",
+	"nestjs",
+	"postgresql",
+	"prisma",
+	"drizzle",
+	"mongoose",
+	"pwa",
+	"jest",
+	"vitest",
+];
+
