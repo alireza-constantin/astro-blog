@@ -1,5 +1,5 @@
 <div
-	class="hidden animate-appear aria-[hidden=false]:flex fixed bottom-5 right-1/2 translate-x-1/2 justify-center items-center gap-3 z-50 bg-stone-100 shadow-xl dark:bg-[#34383b] max-w-fit p-8 rounded-md"
+	class="hidden animate-toast aria-[hidden=false]:flex fixed bottom-5 right-1/2 translate-x-1/2 justify-center items-center gap-3 z-50 bg-stone-100 shadow-xl dark:bg-[#34383b] max-w-fit py-4 px-6 rounded-md"
 	id="toast"
 	aria-hidden="true"
 >
@@ -24,14 +24,16 @@
 <script>
 	const toast = document.getElementById("toast");
 	// let toastHidden = true;
+    let timeoutId: number;
 	document.documentElement.addEventListener("open-toast", () => {
-		// toastHidden = !toastHidden;
-		if (toast) {
-			toast.setAttribute("aria-hidden", "false");
-			setTimeout(() => {
-				// toastHidden = true;
+        if (toast) {
+            clearTimeout(timeoutId)
+            toast.setAttribute("aria-hidden", "false");
+			timeoutId = setTimeout(() => {
+                // toastHidden = true;
 				toast.setAttribute("aria-hidden", "true");
 			}, 2000);
 		}
 	});
+	
 </script>

@@ -13,11 +13,16 @@ module.exports = {
 			},
 			animation: {
 				appear: "appear 1s ease-in forwards",
+				toast: "toast 300ms ease-out forwards",
 			},
 			keyframes: {
 				appear: {
 					"0%": { opacity: "0" },
 					"100%": { opacity: "1" },
+				},
+				toast: {
+					"0%": { opacity: "0", transform: "translateY(100px) translateX(50%)" },
+					"100%": { opacity: "1", transform: "translateY(0px) translateX(50%)" },
 				},
 			},
 			// fontFamily: {
