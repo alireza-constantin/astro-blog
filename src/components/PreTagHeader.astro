@@ -5,9 +5,9 @@ interface Props {
 const { lang } = Astro.props;
 ---
 
-<div id="wrapper" class="bg-[#161821] mt-4 rounded-lg uppercase min-w-full">
+<div id="wrapper" class="bg-[#161821] mt-4 rounded-lg  min-w-full">
 	<div class="flex justify-between items-center px-4 h-8 text-stone-300">
-		<p class="text-base ">{lang}</p>
+		<p class="text-base uppercase">{lang}</p>
 		<copy-clipboard class="cursor-pointer" id="cb">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
