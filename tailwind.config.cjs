@@ -1,3 +1,5 @@
+import { fontFamily } from "tailwindcss/defaultTheme";
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
 	content: ["./src/**/*.{astro,html,js,md,mdx,ts,tsx}"],
@@ -25,10 +27,10 @@ module.exports = {
 					"100%": { opacity: "1", transform: "translateY(0px) translateX(50%)" },
 				},
 			},
-			// fontFamily: {
-			//     sans: [...fontFamily.sans],
-			//     serif: [...fontFamily.serif],
-			// },
+			fontFamily: {
+			    sans: [...fontFamily.sans],
+			    serif: [...fontFamily.serif],
+			},
 			typography: (theme) => ({
 				wiz: {
 					css: {
