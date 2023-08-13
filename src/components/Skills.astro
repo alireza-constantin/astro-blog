@@ -10,7 +10,7 @@ const { skills, title } = Astro.props
 ---
 
 <ul class=" flex flex-wrap gap-1 py-2">
-	<p class="font-bold">{title}:</h5>
+	<li class="font-bold">{title}:</h5>
 	{
 		skills.map((skill, idx) => {
 			const isLast = skills.length - 1 === idx;
