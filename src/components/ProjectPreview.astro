@@ -8,54 +8,119 @@ interface Props {
 const { project } = Astro.props;
 ---
 
-<div class="border-[3px] p-4 rounded-2xl border-textColor dark:border-gray-400">
-	<p class="text-lg font-medium mb-1">{project.title}</p>
-	<p class="text-sm dark:text-gray-400 text-gray-500 leading-normal mb-1">{project.desc}</p>
-	<p class="mb-3 text-accent">Tools: {project.tools}</p>
-	<div class="flex items-center gap-4">
+<accordion-header
+	id="accordion-header"
+	aria-expanded="false"
+	class="group border-[3px] p-4 rounded-2xl border-textColor dark:border-gray-400"
+>
+	<div class="flex items-center justify-between border-b-[1px] border-gray-500">
+		<p class="text-lg font-medium mb-1">{project.title}</p>
+		<div class="relative">
+			<input
+				type="checkbox"
+				class="peer z-10 absolute w-5 h-5 cursor-pointer appearance-none"
+			/>
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				fill="none"
+				viewBox="0 0 24 24"
+				stroke-width="1.5"
+				stroke="currentColor"
+				class="w-5 h-5 hover:text-accent transition-transform duration-700 group-aria-expanded:rotate-180 cursor-pointer"
+			>
+				<path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+				></path>
+			</svg>
+		</div>
+	</div>
+	<div
+		class="mt-2 invisible max-h-0 group-aria-expanded:visible group-aria-expanded:max-h-72 overflow-hidden ease-in-out transition-all duration-700"
+	>
+		<p class="text-sm dark:text-gray-400 text-gray-500 leading-normal mb-1">{project.desc}</p>
+		<p class="mb-3 text-accent">Tools: {project.tools}</p>
+	</div>
+	<div class="flex items-center gap-4 mt-2">
 		{
 			project.live && (
-				
-					<a href={project.live} class="hover:text-accent cursor-pointer" target="_blank" rel="noopener noreferrer">
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							fill="none"
-							viewBox="0 0 24 24"
-							stroke-width="1.5"
-							stroke="currentColor"
-							class="w-6 h-6"
-						>
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
-							/>
-						</svg>
-                        <span class="sr-only">Live</span>
-					</a>
-				</p>
+				<a
+					href={project.live}
+					class="hover:text-accent cursor-pointer"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke-width="1.5"
+						stroke="currentColor"
+						class="w-6 h-6"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
+						/>
+					</svg>
+					<span class="sr-only">Live</span>
+				</a>
 			)
 		}
-			<a href={project.code} target="_blank" rel="noopener noreferrer" class="hover:text-accent cursor-pointer">
-				<svg
-					class="h-6 w-6"
-					aria-hidden="true"
-					focusable="false"
-					xmlns="http://www.w3.org/2000/svg"
-					viewBox="0 0 24 24"
-					stroke-width="1.5"
-					stroke="currentColor"
-					fill="none"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-				>
-					<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-					<path
-						d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"
-					>
-					</path>
-				</svg>
-				<span class="sr-only">Github</span></a
+		<a
+			href={project.code}
+			target="_blank"
+			rel="noopener noreferrer"
+			class="hover:text-accent cursor-pointer"
+		>
+			<svg
+				class="h-6 w-6"
+				aria-hidden="true"
+				focusable="false"
+				xmlns="http://www.w3.org/2000/svg"
+				viewBox="0 0 24 24"
+				stroke-width="1.5"
+				stroke="currentColor"
+				fill="none"
+				stroke-linecap="round"
+				stroke-linejoin="round"
 			>
+				<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+				<path
+					d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"
+				>
+				</path>
+			</svg>
+			<span class="sr-only">Github</span>
+		</a>
 	</div>
-</div>
+</accordion-header>
+
+<script>
+	const acc = document.getElementById("accordion-header");
+	const checkbox = document.querySelector("input[type=checkbox]");
+	let expanded = false;
+
+	class AccordionHeader extends HTMLElement {
+		constructor() {
+			super();
+			const btn = this.querySelector("input[type=checkbox]");
+			btn?.addEventListener(
+				"change",
+				() => {
+					console.log("hello");
+					expanded = !expanded;
+					this.setAttribute("aria-expanded", String(expanded));
+				},
+				true
+			);
+		}
+	}
+
+	customElements.define("accordion-header", AccordionHeader);
+
+	// console.log(checkbox)
+	// checkbox?.addEventListener('change', () => {
+	// 	expanded = !expanded
+	// 	acc?.setAttribute('aria-expanded', String(expanded))
+	// }, true)
+</script>
