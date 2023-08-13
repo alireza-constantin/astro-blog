@@ -3,20 +3,14 @@ import { Image } from "astro:assets";
 import myProfile from "../../assets/profile.jpg";
 ---
 
-<div class="w-64 h-64">
-	<Image id="profile" quality="high" src={myProfile} alt="profile pic" class="profile profile transition-all border-[3px] border-textColor dark:border-gray-400" />
+<div class="max-w-xs md:max-w-4xl mx-auto md:m-0">
+	<Image id="profile" quality="mid" src={myProfile} alt="profile pic" class="profile aspect-square transition-all border-[3px] border-textColor dark:border-gray-400" />
 </div>
 
 <style>
 	.profile {
-		background-position: 50%;
-		background-repeat: no-repeat; 
-		background-size: cover;
 		filter: grayscale(1);
 		border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
-		position: relative;
-		width: 100%;
-		height: 100%;
 		transition: all 2s ease-in-out;
 	}
 
