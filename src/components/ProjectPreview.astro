@@ -16,7 +16,9 @@ const { project } = Astro.props;
 	<div class="flex items-center justify-between border-b-[1px] border-gray-500">
 		<p class="text-lg font-medium mb-1">{project.title}</p>
 		<div class="relative">
+			<label class="sr-only">Accordion checkbox</label>
 			<input
+				id="project-accordion-checkbox"
 				type="checkbox"
 				class="peer z-10 absolute w-5 h-5 cursor-pointer appearance-none"
 			/>
@@ -105,7 +107,6 @@ const { project } = Astro.props;
 			btn?.addEventListener(
 				"change",
 				() => {
-					console.log("hello");
 					expanded = !expanded;
 					this.setAttribute("aria-expanded", String(expanded));
 				},
