@@ -1,17 +1,15 @@
 ---
 import { Image } from "astro:assets";
-import myProfile from "../../assets/profile.jpg";
+import myProfile from "../../assets/pp.jpg";
 ---
 
-<div class="max-w-xs md:max-w-4xl mx-auto md:m-0">
-	<Image id="profile" loading={'eager'} quality="high" src={myProfile} alt="profile pic" class="profile aspect-square transition-all border-[3px] border-textColor dark:border-gray-400" />
+<div class="mx-auto md:m-0">
+	<Image id="profile" loading={'eager'} quality={'high'} src={myProfile} alt="profile pic" class="profile object-cover object-top grayscale duration-[2000ms] aspect-square transition-all border-[3px] border-textColor dark:border-gray-400" />
 </div>
 
 <style>
 	.profile {
-		filter: grayscale(1);
 		border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
-		transition: all 2s ease-in-out;
 	}
 
 	.profile-animate {

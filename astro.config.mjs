@@ -1,4 +1,4 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig, sharpImageService } from 'astro/config';
 import tailwind from "@astrojs/tailwind";
 import prefetch from "@astrojs/prefetch";
 import mdx from "@astrojs/mdx";
@@ -21,6 +21,9 @@ export default defineConfig({
 		prefetch(),
 		mdx(),
 	],
+	image: {
+		service: sharpImageService()
+	},
 	experimental: {
 		assets: true,
 	},
