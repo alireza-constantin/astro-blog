@@ -16,7 +16,7 @@ module.exports = {
 			animation: {
 				appear: "appear 1s ease-in forwards",
 				toast: "toast 300ms ease-out forwards",
-				appearX: "appearX 700ms ease-in forwards",
+				appearX: "appearX 700ms ease-out forwards",
 			},
 			keyframes: {
 				appear: {
@@ -28,14 +28,9 @@ module.exports = {
 					"100%": { opacity: "1", transform: "translateY(0px) translateX(50%)" },
 				},
 				appearX: {
-					"0%": { opacity: "0", transform: "translateX(400px)" },
-					"65%": { opacity: "1", transform: "translateX(0px)" },
+					"0%": { opacity: "0", transform: "translateX(200px)" },
 					"70%": { opacity: "1", transform: "translateX(-10px)" },
-					"80%": { opacity: "1", transform: "translateX(15px)" },
-					"80%": { opacity: "1", transform: "translateX(-8px)" },
-					"85%": { opacity: "1", transform: "translateX(13px)" },
 					"90%": { opacity: "1", transform: "translateX(5px)" },
-					"95%": { opacity: "1", transform: "translateX(8px)" },
 					"100%": { opacity: "1", transform: "translateX(0)" },
 				},
 			},

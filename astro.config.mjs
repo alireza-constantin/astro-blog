@@ -6,7 +6,7 @@ import mdx from "@astrojs/mdx";
 // https://astro.build/config
 export default defineConfig({
 	// change it with actual site url in prod
-	site: "http://localhost:3000",
+	site: "https://alirezasoh.vercel.app",
 	markdown: {
 		shikiConfig: {
 			theme: "material-theme-palenight",
@@ -22,7 +22,7 @@ export default defineConfig({
 		mdx(),
 	],
 	image: {
-		service: sharpImageService()
+		service: sharpImageService(),
 	},
 	experimental: {
 		assets: true,
