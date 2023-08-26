@@ -4,35 +4,12 @@ import myProfile from "../../assets/pp.jpg";
 ---
 
 <div class="mx-auto md:m-0">
-	<Image id="profile"  loading={'eager'} quality={'high'} src={myProfile} alt="profile pic" class="profile object-cover object-top grayscale duration-[2000ms] aspect-square transition-all border-[3px] border-textColor dark:border-gray-400" />
+	<Image id="profile"  loading={'eager'} quality={'high'} src={myProfile} alt="profile pic" class="object-cover rounded-[60%_40%_30%_70%/60%_30%_70%_40%] object-top grayscale duration-[2000ms] aspect-square transition-all border-[3px] border-textColor dark:border-gray-400" />
 </div>
 
 <style>
-	.profile {
-		border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
-	}
 
-	.profile-animate {
-		animation: morph 5s ease-in-out infinite;
-		/* animation-fill-mode: forwards; */
-	}
 
-	@keyframes morph {
-		0% {
-			border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
-			/* border-radius: var(--first-border-radius); */
-		}
-
-		50% {
-			border-radius: 30% 60% 70% 40%/50% 60% 30% 60%;
-			/* border-radius: var(--second-border-radius); */
-		}
-
-		100% {
-			border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
-			/* border-radius: var(--first-border-radius); */
-		}
-	}
 </style>
 <script>
 	import { wait } from "@/utils/helpers";
@@ -47,14 +24,14 @@ import myProfile from "../../assets/pp.jpg";
 			// - to keyframe 0 position and does it smoothly
 			// first time is for when we add animation for the first time it does not need
 			// to wait for two second
-			if (!profilePic.classList.contains("profile-animate") && !firstTime) {
+			if (!profilePic.classList.contains("animate-morph") && !firstTime) {
 				profilePic.style.removeProperty("border-radius");
 				await wait(2);
 			}
 			firstTime = false;
 			const borderRadius = window.getComputedStyle(profilePic).borderRadius;
 			profilePic.style.borderRadius = borderRadius;
-			profilePic.classList.toggle("profile-animate");
+			profilePic.classList.toggle("animate-morph");
 		});
 	}
 </script>

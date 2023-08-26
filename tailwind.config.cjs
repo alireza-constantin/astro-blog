@@ -17,7 +17,8 @@ module.exports = {
 				appear: "appear 1s ease-in forwards",
 				toast: "toast 300ms ease-out forwards",
 				appearX: "appearX 700ms ease-out forwards",
-				disappearX: "disappearX 400ms ease-in"
+				disappearX: "disappearX 400ms ease-in",
+				morph: "morph 5s ease-in-out infinite",
 			},
 			keyframes: {
 				appear: {
@@ -37,6 +38,22 @@ module.exports = {
 				disappearX: {
 					"0%": { opacity: "1", transform: "translateX(0px)" },
 					"100%": { opacity: "0", transform: "translateX(200px)", display: "none" },
+				},
+				morph: {
+					"0%": {
+						"border-radius": "60% 40% 30% 70%/60% 30% 70% 40%",
+						/* border-radius: var(--first-border-radius); */
+					},
+
+					"50%": {
+						"border-radius": "30% 60% 70% 40%/50% 60% 30% 60%",
+						/* border-radius: var(--second-border-radius); */
+					},
+
+					"100%": {
+						"border-radius": "60% 40% 30% 70%/60% 30% 70% 40%",
+						/* border-radius: var(--first-border-radius); */
+					},
 				},
 			},
 			fontFamily: {
