@@ -15,8 +15,8 @@ export default defineConfig({
 	},
 	integrations: [
 		tailwind({
-			applyBaseStyles: true,
-			configFile: "./tailwind.config.cjs",
+			applyBaseStyles: false,
+			// configFile: "./tailwind.config.cjs",
 		}),
 		prefetch(),
 		mdx(),
@@ -28,7 +28,4 @@ export default defineConfig({
 		assets: true,
 	},
 	compressHTML: true,
-	vite: {
-		optimizeDeps: true,
-	},
 });

@@ -4,19 +4,19 @@ import jungle from "../assets/jungle.webp";
 import { Image } from "astro:assets";
 
 const meta = {
-	title: "Oops! Seems like you are lost",
-	description: "Seems like magic make you lost your way",
+        title: "Oops! Seems like you are lost",
+        description: "Seems like magic make you lost your way",
 };
 ---
 
 <RootLayout meta={meta}>
-	<h1 class="text-xl  md:text-3xl font-bold mb-2">404 | Oops! Seems like you are lost</h1>
-	<p class="text-xs md:text-base">
-		Please use navigation to find your way out, sometimes losing your way in magic can be
-		dangerous
-	</p>
+        <h1 class="text-xl  md:text-3xl font-bold mb-2">404 | Oops! Seems like you are lost</h1>
+        <p class="text-xs md:text-base">
+                Please use navigation to find your way out, sometimes losing your way in magic can be
+                dangerous
+        </p>
     <div class="rounded-md">
-		<Image id="404" class="mt-6 rounded-md" src={jungle} alt="mystery jungle" />
+                <Image id="404" class="mt-6 rounded-md" src={jungle} alt="mystery jungle" />
 
     </div>
 </RootLayout>
