@@ -22,7 +22,7 @@ const { project } = Astro.props;
 			<input
 				id={`project-accordion-checkbox-${project.title}`}
 				type="checkbox"
-				class="peer z-10 absolute w-5 h-5 cursor-pointer appearance-none"
+				class="peer z-10 absolute w-5 h-5 cursor-pointer hover:text-accent appearance-none"
 			/>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -30,7 +30,7 @@ const { project } = Astro.props;
 				viewBox="0 0 24 24"
 				stroke-width="1.5"
 				stroke="currentColor"
-				class="w-5 h-5 hover:text-accent transition-transform duration-700 delay-200 group-aria-expanded:delay-0 group-aria-expanded:rotate-180 cursor-pointer"
+				class="w-5 h-5 will-change-auto peer-hover:text-accent transition-transform duration-700 delay-100  sm:delay-200 group-aria-expanded:delay-0 group-aria-expanded:rotate-180 cursor-pointer"
 			>
 				<path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"
 				></path>
