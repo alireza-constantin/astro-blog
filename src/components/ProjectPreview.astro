@@ -16,7 +16,9 @@ const { project } = Astro.props;
 	<div class="flex items-center justify-between border-b-[1px] border-gray-500">
 		<p class="text-lg font-medium mb-1">{project.title}</p>
 		<div class="relative">
-			<label for={`project-accordion-checkbox-${project.title}`} class="sr-only">Accordion checkbox</label>
+			<label for={`project-accordion-checkbox-${project.title}`} class="sr-only"
+				>Accordion checkbox</label
+			>
 			<input
 				id={`project-accordion-checkbox-${project.title}`}
 				type="checkbox"
@@ -98,33 +100,60 @@ const { project } = Astro.props;
 </accordion-header>
 
 <script>
-	
+	type SelectAcc = {
+		selected: null | HTMLElement;
+	};
+
+	const selectAcc: SelectAcc = {
+		selected: null,
+	};
+
+	const acc = new Proxy(
+		selectAcc,
+		{
+			set(target: SelectAcc, p: keyof SelectAcc, newval: HTMLElement) {
+				const oldval = target[p];
+				if (p === "selected") {
+					if (oldval) {
+						oldval.setAttribute("aria-expanded", "false");
+					}
+					if (newval) {
+						newval.setAttribute("aria-expanded", "true");
+					}
+				}
+				target[p] = newval;
+				return true;
+			},
+		}
+	);
+
 	class AccordionHeader extends HTMLElement {
 		constructor() {
-			let expanded = false;
 			super();
 			const btn = this.querySelector("input[type=checkbox]");
 			btn?.addEventListener(
 				"change",
 				() => {
-					expanded = !expanded;
-					this.setAttribute("aria-expanded", String(expanded));
+					if (acc.selected === this) {
+						acc.selected = null;
+						return;
+					}
+					acc.selected = this;
 				},
 				true
 			);
 
-			const observer = new IntersectionObserver(entries => {
+			const observer = new IntersectionObserver((entries) => {
 				entries.forEach((entry) => {
-					if(entry.isIntersecting){
-						entry.target.classList.add('animate-appearX')
+					if (entry.isIntersecting) {
+						entry.target.classList.add("animate-appearX");
 					}
-				})
-			})
+				});
+			});
 
-			observer.observe(this)
+			observer.observe(this);
 		}
 	}
 
 	customElements.define("accordion-header", AccordionHeader);
-
 </script>
