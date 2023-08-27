@@ -2,6 +2,7 @@ import { defineConfig, sharpImageService } from 'astro/config';
 import tailwind from "@astrojs/tailwind";
 import prefetch from "@astrojs/prefetch";
 import mdx from "@astrojs/mdx";
+import sitemap from "@astrojs/sitemap"
 
 // https://astro.build/config
 export default defineConfig({
@@ -20,6 +21,7 @@ export default defineConfig({
 		}),
 		prefetch(),
 		mdx(),
+		sitemap()
 	],
 	image: {
 		service: sharpImageService(),
