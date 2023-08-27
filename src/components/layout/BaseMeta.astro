@@ -5,6 +5,7 @@ type Props = siteMeta;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const {  description, title } = Astro.props;
 const siteTitle = `${title} • alirezasoh.dev`;
+const socialImageURL = new URL("/social-card.png", Astro.url).href;
 ---
 
 <meta charset="utf-8" />
@@ -25,13 +26,23 @@ const siteTitle = `${title} • alirezasoh.dev`;
 <meta name="theme-color" content={LIGHT_THEME_COLOR} />
 <meta name="generator" content={Astro.generator} />
 
+
+<!-- Open Graph  -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:site_name" content="alirezasoh.dev" />
+<meta property="og:image" content={socialImageURL} />
+<meta property="og:image:width" content="1023" />
+<meta property="og:image:height" content="630" />
+
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={canonicalURL} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
-<!-- to be added -->
-<!-- <meta property="twitter:image" content={socialImageURL} /> -->
+<meta property="twitter:image" content={socialImageURL} />
 
 
 
