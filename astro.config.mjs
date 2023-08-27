@@ -30,4 +30,9 @@ export default defineConfig({
 		assets: true,
 	},
 	compressHTML: true,
+	vite: {
+		optimizeDeps: {
+			exclude: ["@resvg/resvg-js"]
+		}
+	}
 });
