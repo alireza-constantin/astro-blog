@@ -1,4 +1,5 @@
 import { fontFamily } from "tailwindcss/defaultTheme";
+const defaultTheme = require("tailwindcss/defaultTheme");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -6,6 +7,10 @@ module.exports = {
 	darkMode: "class",
 	theme: {
 		extend: {
+			screens: {
+				xs: "475px",
+				...defaultTheme.screens,
+			},
 			colors: {
 				bgColor: "var(--theme-bg)",
 				textColor: "var(--theme-text)",

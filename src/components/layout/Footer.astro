@@ -1,26 +1,27 @@
 ---
 import { MENU_LINKS } from "@/utils/constant";
-import Resume from "../assets/Alireza_Soheili_Resume.pdf";
 const year = new Date().getFullYear();
 ---
 
 <footer
-	class="mt-auto flex w-full flex-col items-center justify-center gap-y-2 pb-4 pt-20 text-center align-top text-gray-500 sm:flex-row sm:justify-between sm:text-xs"
+	class="mt-auto flex w-full flex-col justify-center gap-y-2 pb-4 pt-20 text-center align-top text-gray-500 sm:flex-row sm:justify-between sm:text-xs"
 >
-	<div class="me-0 sm:me-4">
-		Copyright &copy; {year}
-		<span class="mx-2" aria-label="mage emoji">🧙‍♂️</span>
-		Alireza Soheili
+	<div class="me-0 sm:me-4 flex flex-col items-center xs:items-end xs:flex-row gap-1  xs:gap-4">
+		<p class="leading-none">Copyright &copy; {year}</p>
+		<div class="flex items-end ">
+		<span class="mr-2" aria-label="mage emoji">🧙‍♂️</span>
+		<p class="align-bottom leading-none">Alireza Soheili</p>
+		</div>
 	</div>
 	<nav
 		aria-label="More on this site"
-		class="flex gap-x-2 sm:gap-x-0 sm:divide-x sm:divide-gray-500"
+		class="flex items-end gap-x-2 sm:gap-x-0 sm:divide-x sm:divide-gray-500"
 	>
 		{
 			MENU_LINKS.map((link) => (
 				<a
 					href={link.path}
-					class="px-4 py-2 sm:px-2 sm:py-0 sm:hover:text-textColor sm:hover:underline"
+					class="px-4 py-2 leading-none align-bottom sm:px-2 sm:py-0 sm:hover:text-textColor sm:hover:underline"
 				>
 					{link.title}
 				</a>
@@ -29,7 +30,7 @@ const year = new Date().getFullYear();
 		<a
 			download
 			href="/public/Alireza_Soheili_Resume.pdf"
-			class="px-4 py-2 sm:px-2 sm:py-0 sm:hover:text-textColor sm:hover:underline">Resume</a
+			class="px-4 py-2 sm:px-2 leading-none align-text-bottom sm:py-0 sm:hover:text-textColor sm:hover:underline">Resume</a
 		>
 	</nav>
 </footer>
