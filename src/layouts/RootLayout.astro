@@ -12,12 +12,12 @@ interface Props {
 	meta: siteMeta
 }
 
-const { meta: { title, description = SITE_DESCRIPTION } } = Astro.props
+const { meta: { title, description = SITE_DESCRIPTION, ogImage } } = Astro.props
 ---
 
 <html lang="en">
 	<head>
-		<BaseMeta title={title} description={description} />
+		<BaseMeta title={title} description={description} ogImage={ogImage} />
 		<script
 			defer
 			src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"

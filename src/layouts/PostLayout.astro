@@ -2,13 +2,15 @@
 import type { CollectionEntry } from "astro:content";
 import RootLayout from "./RootLayout.astro";
 import PostHero from "@/components/layout/PostHero";
+import type { siteMeta } from "src/types";
 
 interface Props {
 	post: CollectionEntry<"post">;
 }
 
 const { post } = Astro.props;
-const rootMeta = { title: post.data.title, description: post.data.description };
+const socialImage = `og-image/${post.slug}.png`
+const rootMeta: siteMeta = { title: post.data.title, description: post.data.description, ogImage: socialImage  };
 const { headings } = await post.render()
 ---
 

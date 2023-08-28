@@ -3,9 +3,12 @@ import { LIGHT_THEME_COLOR } from "@/utils/constant";
 import type { siteMeta } from "src/types";
 type Props = siteMeta;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const {  description, title } = Astro.props;
+const {  description, title, ogImage } = Astro.props;
 const siteTitle = `${title} • alirezasoh.dev`;
-const socialImageURL = new URL("/social-card.png", Astro.url).href;
+console.log(ogImage);
+const socialImageURL = new URL(ogImage ? ogImage : "/social_image.jpg", Astro.url).href;
+console.log(Astro.url)
+console.log('url',ogImage);
 ---
 
 <meta charset="utf-8" />
