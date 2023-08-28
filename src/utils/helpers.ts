@@ -13,3 +13,9 @@ export const wait = (t: number) => {
 		}, t * 1000);
 	});
 };
+
+export function formatReadingTime(readingTime: string){
+	const time = parseInt(readingTime);
+	const cups = Math.ceil(time / 5)
+	return "☕️".repeat(cups)
+}

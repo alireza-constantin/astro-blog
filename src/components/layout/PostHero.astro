@@ -1,25 +1,31 @@
 ---
-import type { Post } from 'src/types'
+import { formatReadingTime } from "@/utils/helpers";
+import type { Post } from "src/types";
 interface Props {
-    post: Post,
-    readingTime: string,
+	post: Post;
+	readingTime: string;
 }
 
-const { post, readingTime } = Astro.props
+const { post, readingTime } = Astro.props;
 
-const date = new Date(post.publishDate)
-const ISODate = date.toISOString()
-const formattedDate = date.toLocaleDateString('en-us', {
-    day: "numeric",
-    month: "long",
-    year: "numeric"
-})
+const date = new Date(post.publishDate);
+const ISODate = date.toISOString();
+const formattedDate = date.toLocaleDateString("en-us", {
+	day: "numeric",
+	month: "long",
+	year: "numeric",
+});
+
+const formatedReadingTime = formatReadingTime(readingTime);
 ---
 
 <h1 class="text-2xl text-accent-2 font-extrabold mb-3 sm:mb-1">{post.title}</h1>
-<div class="flex items-center gap-1 font-bold">
-    <time datetime={ISODate}>{formattedDate}</time>
-    <p>/</p>
-    <p>{readingTime}</p>
+<div class="flex items-center leading-none gap-1 font-bold">
+	<time datetime={ISODate}>{formattedDate}</time>
+	<span class="leading-none text-xl font-extralight">|</span>
+	<div class="leading-none flex items-center">
+		<span class="mr-2 text-2xl leading-none">{formatedReadingTime}</span>
+		<span class="leading-none">{readingTime}</span>
+	</div>
 </div>
 <p class="mt-4 pb-4 text-slate-600 dark:text-gray-400">{post.description}</p>
