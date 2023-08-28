@@ -1,10 +1,11 @@
 ---
 import type { Post } from 'src/types'
 interface Props {
-    post: Post
+    post: Post,
+    readingTime: string,
 }
 
-const { post } = Astro.props
+const { post, readingTime } = Astro.props
 
 const date = new Date(post.publishDate)
 const ISODate = date.toISOString()
@@ -15,6 +16,10 @@ const formattedDate = date.toLocaleDateString('en-us', {
 })
 ---
 
-<h1 class="text-2xl text-accent-2 mb-3 sm:mb-1">{post.title}</h1>
-<time datetime={ISODate}>{formattedDate}</time>
+<h1 class="text-2xl text-accent-2 font-extrabold mb-3 sm:mb-1">{post.title}</h1>
+<div class="flex items-center gap-1 font-bold">
+    <time datetime={ISODate}>{formattedDate}</time>
+    <p>/</p>
+    <p>{readingTime}</p>
+</div>
 <p class="mt-4 pb-4 text-slate-600 dark:text-gray-400">{post.description}</p>

@@ -9,21 +9,29 @@ interface Props {
 }
 
 const { post } = Astro.props;
-const socialImage = `og-image/${post.slug}.png`
-const rootMeta: siteMeta = { title: post.data.title, description: post.data.description, ogImage: socialImage  };
-const { headings } = await post.render()
+const socialImage = `og-image/${post.slug}.png`;
+const rootMeta: siteMeta = {
+	title: post.data.title,
+	description: post.data.description,
+	ogImage: socialImage,
+};
+const { headings, remarkPluginFrontmatter } = await post.render();
+console.log(remarkPluginFrontmatter);
 ---
 
 <RootLayout meta={rootMeta}>
 	<div class="gap-x-10 lg:flex lg:items-start">
-		{ headings.length > 0 && (
-			<aside class="sticky top-20 order-2 -me-32 hidden basis-64 lg:block">
+		{
+			headings.length > 0 && (
+				<aside class="sticky top-20 order-2 -me-32 hidden basis-64 lg:block">
 					<h2 class="font-semibold">Table of Contents</h2>
 					<ul class="mt-4 text-xs">
 						{headings.map(({ depth, slug, text }) => (
 							<li class="line-clamp-2 hover:text-accent">
 								<a
-									class={`block ${depth <= 2 ? "mt-3" : "mt-2 ps-3 text-[0.6875rem]"}`}
+									class={`block ${
+										depth <= 2 ? "mt-3" : "mt-2 ps-3 text-[0.6875rem]"
+									}`}
 									href={`#${slug}`}
 									aria-label={`Scroll to section: ${text}`}
 								>
@@ -34,9 +42,12 @@ const { headings } = await post.render()
 						))}
 					</ul>
 				</aside>
-		)}
+			)
+		}
 		<article class="flex-grow break-words" data-pagefind-body>
-			<div id="blog-hero" class="border-b-2 border-accent border-spacing-8"><PostHero post={post.data} /></div>
+			<div id="blog-hero" class="border-b-2 border-accent border-spacing-8">
+				<PostHero readingTime={remarkPluginFrontmatter.readingTime} post={post.data} />
+			</div>
 			<div
 				class="prose prose-pre:mt-0 prose-sm md:prose-base prose-code:prose-sm prose-wiz mt-8 prose-headings:font-semibold prose-headings:before:absolute md:prose-headings:before:-ms-5 prose-headings:before:-ms-4 prose-headings:before:text-accent prose-headings:before:content-['#'] prose-th:before:content-none"
 			>
@@ -46,7 +57,7 @@ const { headings } = await post.render()
 	</div>
 	<button
 		id="to-top-btn"
-		class="z-90 fixed bottom-8 end-4 flex h-10 w-10 translate-y-28 items-center justify-center rounded-full border-2 border-transparent bg-zinc-200 text-3xl  transition-all duration-300 hover:border-zinc-400 opacity-0 data-[show=true]:translate-y-0 data-[show=true]:opacity-100 dark:bg-zinc-700 sm:end-8 sm:h-12 sm:w-12"
+		class="z-90 fixed bottom-8 end-4 flex h-10 w-10 translate-y-28 items-center justify-center rounded-full border-2 border-transparent bg-zinc-200 text-3xl transition-all duration-300 hover:border-zinc-400 opacity-0 data-[show=true]:translate-y-0 data-[show=true]:opacity-100 dark:bg-zinc-700 sm:end-8 sm:h-12 sm:w-12"
 		aria-label="Back to Top"
 		data-show="false"
 		><svg

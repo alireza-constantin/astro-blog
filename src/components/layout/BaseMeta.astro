@@ -5,10 +5,7 @@ type Props = siteMeta;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const {  description, title, ogImage } = Astro.props;
 const siteTitle = `${title} • alirezasoh.dev`;
-console.log(ogImage);
 const socialImageURL = new URL(ogImage ? ogImage : "/social_image.jpg", Astro.url.origin).href;
-console.log(Astro.url)
-console.log('url',ogImage);
 ---
 
 <meta charset="utf-8" />

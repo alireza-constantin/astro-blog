@@ -32,12 +32,13 @@ const ogOptions: SatoriOptions = {
 	],
 };
 
-const markup = (title: string, pubDate: string) => html`<div
+const markup = (title: string, pubDate: string, readingTime: string) => html`<div
 	tw="flex flex-col w-full h-full bg-[#1d1f21] text-[#c9cacc]"
 >
 	<div tw="flex flex-col flex-1 w-full p-10 justify-center">
 		<p tw="text-2xl mb-6">${pubDate}</p>
 		<h1 tw="text-6xl font-bold leading-snug text-white">${title}</h1>
+		<p class="text-lg">${readingTime}</p>
 	</div>
 	<div tw="flex items-center justify-between w-full p-10 border-t border-[#4973FF] text-xl">
 		<div tw="flex items-center">
@@ -75,6 +76,13 @@ const markup = (title: string, pubDate: string) => html`<div
 
 export async function get({ params: { slug } }: APIContext) {
 	const post = await getEntryBySlug("post", slug!);
+	if(!post) {
+		return {
+			msg: "there is not a post"
+		}
+	}
+	const { remarkPluginFrontmatter } = await post?.render();
+	const { readingTime } = remarkPluginFrontmatter;
 	const title = post?.data.title ?? "alirezasoh.dev";
 	const postDate = new Date(post?.data.publishDate) ?? Date.now();
     const formattedDate = postDate.toLocaleDateString("en-us", {
@@ -83,7 +91,7 @@ export async function get({ params: { slug } }: APIContext) {
     month: "long",
     year: "numeric",
 });
-	const svg = await satori(markup(title, formattedDate), ogOptions);
+	const svg = await satori(markup(title, formattedDate, readingTime), ogOptions);
 	const png = new Resvg(svg).render().asPng();
 	return {
 		body: png,

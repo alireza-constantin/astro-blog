@@ -17,7 +17,7 @@ export type Project = {
 export type siteMeta = {
 	title: string,
 	description?: string,
-	ogImage: string,
+	ogImage: string | null,
 }
 
 export const postSchema = z.object({

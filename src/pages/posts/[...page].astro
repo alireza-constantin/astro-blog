@@ -6,6 +6,7 @@ import PostPreview from "@/components/PostPreview";
 import Pagination from "@/components/Paginator";
 import { sortPostsByDate } from "@/utils/helpers";
 import RootLayout from "@/layouts/RootLayout";
+import type { siteMeta } from "src/types";
 
 export const getStaticPaths = (async ({ paginate }) => {
 	const allPosts = await getCollection("post");
@@ -20,9 +21,10 @@ interface Props {
 
 const { page } = Astro.props;
 
-const meta = {
+const meta: siteMeta = {
 	title: "Posts",
 	description: "A list of blog post by me",
+	ogImage: null
 };
 
 const paginationProps = {

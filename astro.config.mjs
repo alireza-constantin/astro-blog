@@ -3,6 +3,7 @@ import tailwind from "@astrojs/tailwind";
 import prefetch from "@astrojs/prefetch";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap"
+import { remarkReadingTime } from './src/utils/remark-reading-time.mjs';
 
 // https://astro.build/config
 export default defineConfig({
@@ -13,6 +14,7 @@ export default defineConfig({
 			theme: "material-theme-palenight",
 			wrap: true,
 		},
+		remarkPlugins: [remarkReadingTime],
 	},
 	integrations: [
 		tailwind({
