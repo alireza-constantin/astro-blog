@@ -17,5 +17,5 @@ export const wait = (t: number) => {
 export function formatReadingTime(readingTime: string){
 	const time = parseInt(readingTime);
 	const cups = Math.ceil(time / 5)
-	return "☕️".repeat(cups)
+	return "☕️".repeat(cups);
 }
