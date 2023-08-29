@@ -22,6 +22,28 @@ export function getUniqueTags(posts: CollectionEntry<'post'>[]): Array<string> {
 	return Array.from(uniqueTags)
 }
 
+type CountedTag = {
+	tag: string,
+	count: number
+}
+
+export function getUniqueTagsWithCount(posts: CollectionEntry<"post">[] = []) {
+	// [css, html, koor] [cow, gow, wow]
+	const tagsMap = new Map<string, number>()
+	posts.map(post => {
+		const tags: Array<string> = post.data.tags;
+		tags.map(tag => {
+			const tagMap = tagsMap.get(tag);
+			if(tagMap){
+				tagsMap.set(tag, tagMap + 1)
+			} else {
+				tagsMap.set(tag, 1)
+			}
+		})
+	})
+	return tagsMap;
+}
+
 
 export function lowerCase(arr: Array<string>): Array<string> {
 	return arr.map((a) => a.toLocaleLowerCase());
