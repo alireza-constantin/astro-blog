@@ -18,21 +18,17 @@ const { meta: { title, description = SITE_DESCRIPTION, ogImage } } = Astro.props
 <html lang="en">
 	<head>
 		<BaseMeta title={title} description={description} ogImage={ogImage} />
-		<script
-			defer
-			src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"
-		></script>
 		<title>Astro</title>
 	</head>
 	<body class="overflow-x-hidden">
 	<Toast />
-		<lottie-player
+		<dotlottie-player
 			src="https://lottie.host/d4f0fd92-950f-4bb4-aa41-12d9382b3cff/1r8SpK8Mxj.json"
 			speed="1"
 			id="stars"
 			class="bg-transparent top-0 bottom-0 left-0 right-0 -z-10 absolute"
 			direction="1"
-			mode="normal"></lottie-player>
+			mode="normal"></dotlottie-player>
 		<ThemeProvider />
 		<Header />
 		<slot />
@@ -41,6 +37,7 @@ const { meta: { title, description = SITE_DESCRIPTION, ogImage } } = Astro.props
 </html>
 
 <script>
+import "@dotlottie/player-component"
 	const animation = document.getElementById("stars") as HTMLVideoElement & { stop: () => void };
 	if (animation) {
 		document.documentElement.addEventListener("show-stars", () => {
