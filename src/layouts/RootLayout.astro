@@ -7,6 +7,7 @@ import Toast from "@/components/Toast";
 import BaseMeta from "@/components/layout/BaseMeta";
 import type { siteMeta } from "src/types";
 import { SITE_DESCRIPTION } from "@/utils/constant";
+import { ViewTransitions } from 'astro:transitions'
 
 interface Props {
 	meta: siteMeta;
@@ -21,9 +22,10 @@ const {
 	<head>
 		<BaseMeta title={title} description={description} ogImage={ogImage} />
 		<script
-			type="module"
+			type="module"/analysis/https-alirezasoh-vercel-app/8mlf4lpgwq?form_factor=mobile
 			src="https://unpkg.com/@dotlottie/player-component@2.3.0/dist/dotlottie-player.mjs"
-			></script>
+			async></script>
+			<ViewTransitions />
 		<title>Astro</title>
 	</head>
 	<body class="overflow-x-hidden">
