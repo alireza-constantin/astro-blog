@@ -5,7 +5,6 @@ import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import { remarkReadingTime } from './src/utils/remark-reading-time.mjs';
 
-import vercel from "@astrojs/vercel/static";
 
 // https://astro.build/config
 export default defineConfig({
@@ -27,8 +26,4 @@ export default defineConfig({
       exclude: ["@resvg/resvg-js"]
     }
   },
-  output: "static",
-  adapter: vercel({
-    imageService: true
-  })
 });
