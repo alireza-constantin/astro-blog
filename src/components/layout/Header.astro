@@ -8,7 +8,7 @@ const url = new URL(Astro.request.url);
 	<div class="flex items-center justify-between">
 		<dotlottie-player
 			id="wizard"
-			src="https://lottie.host/72e74b27-5d84-46db-82db-af1245e7836c/Sg0zymalLv.json"
+			src="/wizard.lottie"
 			speed="1"
 			loop
 			autoplay
@@ -89,7 +89,8 @@ const url = new URL(Astro.request.url);
 	</div>
 </header>
 <script>
-	import "@dotlottie/player-component"
+	// import "@dotlottie/player-component"
+
 	document.addEventListener("DOMContentLoaded", () => {
 		const header = document.getElementById("main-header") as HTMLElement;
 		const toggleMenuButton = document.getElementById(
