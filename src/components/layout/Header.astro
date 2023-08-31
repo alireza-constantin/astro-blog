@@ -6,16 +6,15 @@ const url = new URL(Astro.request.url);
 
 <header id="main-header" class="group relative mb-12 flex justify-between items-center">
 	<div class="flex items-center justify-between">
-		<dotlottie-player
+		<lottie-player
 			id="wizard"
-			src="/wizard.lottie"
+			src="https://lottie.host/d2a7b656-0707-4e64-b59a-65b0909f4176/7Uf6MoTXGf.json"
 			speed="1"
 			loop
 			autoplay
 			class="bg-transparent animate-appear cursor-pointer w-32 sm:grayscale hover:filter-none -mr-6 -ml-4 md:-ml-11"
 			direction="1"
-			mode="normal"></dotlottie-player>
-
+			mode="normal"></lottie-player>
 		<div class="flex flex-col h-[128px]  justify-center">
 			<h4 class="hidden sm:block text-xl font-bold sm:text-2xl">Alireza Soheili</h4>
 			<nav
@@ -89,8 +88,6 @@ const url = new URL(Astro.request.url);
 	</div>
 </header>
 <script>
-	// import "@dotlottie/player-component"
-
 	document.addEventListener("DOMContentLoaded", () => {
 		const header = document.getElementById("main-header") as HTMLElement;
 		const toggleMenuButton = document.getElementById(

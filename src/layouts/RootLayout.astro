@@ -7,7 +7,7 @@ import Toast from "@/components/Toast";
 import BaseMeta from "@/components/layout/BaseMeta";
 import type { siteMeta } from "src/types";
 import { SITE_DESCRIPTION } from "@/utils/constant";
-import { ViewTransitions } from 'astro:transitions'
+import { ViewTransitions } from "astro:transitions";
 
 interface Props {
 	meta: siteMeta;
@@ -21,31 +21,29 @@ const {
 <html lang="en">
 	<head>
 		<BaseMeta title={title} description={description} ogImage={ogImage} />
+		<script async src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 		<script
-			type="module"/analysis/https-alirezasoh-vercel-app/8mlf4lpgwq?form_factor=mobile
-			src="https://unpkg.com/@dotlottie/player-component@2.3.0/dist/dotlottie-player.mjs"
-			async></script>
-			<ViewTransitions />
+			src="https://unpkg.com/@lottiefiles/jlottie@latest/dist/jlottie.min.js"
+			type="module"></script>
+		<ViewTransitions />
 		<title>Astro</title>
 	</head>
 	<body class="overflow-x-hidden">
 		<Toast />
-		<dotlottie-player
-			src="/star.lottie"
+		<lottie-player
+			src="https://lottie.host/9d0cc11e-590b-416f-a8be-660dad454552/r64OBy1U64.json"
 			speed="1"
 			loop="false"
 			id="stars"
 			class="bg-transparent top-0 bottom-0 left-0 right-0 -z-10 absolute"
 			direction="1"
-			mode="normal"></dotlottie-player>
+			mode="normal"></lottie-player>
 		<div id="stars"></div>
 		<ThemeProvider />
 		<Header />
 		<slot />
 		<Footer />
 		<script>
-			// import "@dotlottie/player-component"
-
 			const animation = document.getElementById("stars") as HTMLVideoElement & {
 				stop: () => void;
 			};
