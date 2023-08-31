@@ -2,7 +2,6 @@
 	class ThemeToggle extends HTMLElement {
 		constructor() {
 			super();
-			console.log("test theme custom");
 			const button = this.querySelector("button") as HTMLButtonElement;
 
 			if (button) {
@@ -119,16 +118,8 @@
 </theme-toggle>
 
 <script is:inline>
-	// document.addEventListener(
-	// 	"astro:page-load",
-	// 	() => {
-			console.log("button");
-
 			window.bodyThemeIsDark = document.documentElement.classList.contains("dark");
 			document
 				.getElementById("toggle-theme")
 				.setAttribute("aria-pressed", String(bodyThemeIsDark));
-		// }
-	// 	{ once: true }
-	// );
 </script>

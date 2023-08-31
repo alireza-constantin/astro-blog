@@ -7,7 +7,6 @@ import type { siteMeta } from "src/types";
 const allPosts = await getCollection("post");
 const allTags: Map<string,number> = getUniqueTagsWithCount(allPosts);
 const sortedTags = [...allTags.entries()].sort((a, b) => b[1] - a[1])
-console.log(sortedTags)
 
 const meta: siteMeta = {
 	title: "All Tags",
