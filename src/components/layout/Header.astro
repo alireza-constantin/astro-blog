@@ -97,11 +97,10 @@ const url = new URL(Astro.request.url);
 	</div>
 </header>
 <script>
-	document.addEventListener("astro:page-load", () => {
 		const header = document.getElementById("main-header") as HTMLElement;
 		const toggleMenuButton = document.getElementById(
 			"toggle-navigation-menu"
-		) as HTMLButtonElement;
+			) as HTMLButtonElement;
 		let menuOpen = false;
 
 		toggleMenuButton.addEventListener("click", () => {
@@ -112,11 +111,9 @@ const url = new URL(Astro.request.url);
 		const wizardAnimation = document.getElementById("wizard");
 		if (wizardAnimation) {
 			const showStarsEvent = new CustomEvent("show-stars");
-			console.log("wiz");
 			wizardAnimation.addEventListener("click", () => {
-				console.log("wiz wiz");
 				document.documentElement.dispatchEvent(showStarsEvent);
 			});
 		}
-	});
+
 </script>

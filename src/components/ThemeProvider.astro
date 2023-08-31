@@ -4,7 +4,6 @@ import { DARK_THEME_COLOR, LIGHT_THEME_COLOR } from "src/utils/constant";
 
 {/* Inlined to avoid FOUC. */}
 <script define:vars={{ DARK_THEME_COLOR, LIGHT_THEME_COLOR }}>
-	// document.addEventListener("astro:page-load", () => {
 		function setDarkMode(){
 		const root = document.documentElement;
 		const colorThemeMetaTag = document.querySelector("meta[name='theme-color']");
@@ -32,6 +31,4 @@ import { DARK_THEME_COLOR, LIGHT_THEME_COLOR } from "src/utils/constant";
 		});
 	}
 	setDarkMode()
-	document.addEventListener('astro:after-swap', setDarkMode);
-	// }, { once: true});
 </script>

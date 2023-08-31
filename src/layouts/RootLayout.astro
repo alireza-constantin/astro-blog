@@ -22,7 +22,6 @@ const {
 		<BaseMeta title={title} description={description} ogImage={ogImage} />
 		<!-- <script defer src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script> -->
 		<!-- <script type="module" defer src="https://unpkg.com/@dotlottie/player-component@2.3.0/dist/dotlottie-player.mjs" ></script> -->
-		<ViewTransitions />
 		<title>Astro</title>
 	</head>
 	<body class="overflow-x-hidden">
@@ -50,23 +49,17 @@ const {
 		<Footer />
 		<script>
 			import "@dotlottie/player-component";
-			document.addEventListener(
-				"astro:page-load",
-				() => {
-					// This only runs once.
-					const animation = document.getElementById("stars") as HTMLVideoElement & {
+
+				const animation = document.getElementById("stars") as HTMLVideoElement & {
 						stop: () => void;
 					};
 					if (animation) {
 						document.documentElement.addEventListener("show-stars", () => {
-							console.log(animation);
 							animation.stop();
 							animation.play();
 						});
 					}
-				},
-		
-			);
+			
 		</script>
 	</body>
 </html>
