@@ -6,22 +6,11 @@ const url = new URL(Astro.request.url);
 
 <header id="main-header" class="group relative mb-12 flex justify-between items-center">
 	<div class="flex items-center justify-between">
-		<!-- <lottie-player
-			id="wizard"
-			src="https://lottie.host/d2a7b656-0707-4e64-b59a-65b0909f4176/7Uf6MoTXGf.json"
-			speed="1"
-			loop
-			autoplay
-			class="bg-transparent animate-appear cursor-pointer w-32 sm:grayscale hover:filter-none -mr-6 -ml-4 md:-ml-11"
-			direction="1"
-			src="https://lottie.host/b399d7b5-7f29-4925-b222-5b21b841c7c9/qTHCf273IX.lottie"
-			mode="normal"></lottie-player> -->
 		<dotlottie-player
 			id="wizard"
 			src="/wizard.lottie"
 			speed="1"
-			loop
-			autoplay
+			loop="false"
 			class="bg-transparent animate-appear cursor-pointer w-32 sm:grayscale hover:filter-none -mr-6 -ml-4 md:-ml-11"
 			direction="1"
 			mode="normal"></dotlottie-player>
@@ -108,10 +97,18 @@ const url = new URL(Astro.request.url);
 			menuOpen = !menuOpen;
 			toggleMenuButton.setAttribute("aria-expanded", menuOpen.toString());
 		});
-		const wizardAnimation = document.getElementById("wizard");
+		const wizardAnimation = document.getElementById("wizard") as HTMLVideoElement & {
+						stop: () => void;
+		};
 		if (wizardAnimation) {
 			const showStarsEvent = new CustomEvent("show-stars");
 			wizardAnimation.addEventListener("click", () => {
+				if(window.location.pathname !== "/"){
+					window.location.pathname = "/"
+					return;
+				}
+				wizardAnimation.stop();
+				wizardAnimation.play();
 				document.documentElement.dispatchEvent(showStarsEvent);
 			});
 		}
