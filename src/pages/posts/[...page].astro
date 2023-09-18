@@ -52,7 +52,7 @@ const paginationProps = {
 				{
 					page.data.map((p) => (
 						<a href={`/posts/${p.slug}`}>
-							<PostPreview post={p} withDesc />
+							<PostPreview post={p} />
 						</a>
 					))
 				}

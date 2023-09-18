@@ -45,7 +45,7 @@ const { headings, remarkPluginFrontmatter } = await post.render();
 		}
 		<article class="flex-grow break-words" data-pagefind-body>
 			<div id="blog-hero" class="border-b-2 border-accent border-spacing-8">
-				<PostHero readingTime={remarkPluginFrontmatter.readingTime} post={post.data} />
+				<PostHero  readingTime={remarkPluginFrontmatter.readingTime} post={post.data} />
 			</div>
 			<div
 				class="prose prose-pre:mt-0 prose-sm md:prose-base prose-code:prose-sm prose-wiz mt-8 prose-headings:font-semibold prose-headings:before:absolute md:prose-headings:before:-ms-5 prose-headings:before:block  prose-headings:before:-ms-4 prose-headings:before:text-accent prose-headings:before:content-['#'] prose-th:before:content-none"
