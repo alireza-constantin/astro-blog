@@ -18,6 +18,7 @@ import myProfile from "../../assets/pp.jpg";
 <script>
 	import { wait } from "@/utils/helpers";
 
+	document.addEventListener("astro:page-load", () => {
 		const profilePic = document.getElementById("profile");
 
 		let firstTime = true;
@@ -38,4 +39,5 @@ import myProfile from "../../assets/pp.jpg";
 				profilePic.classList.toggle("animate-morph");
 			});
 		}
+	});
 </script>

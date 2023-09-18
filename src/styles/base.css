@@ -44,7 +44,7 @@
 	}
 
 	.link {
-		@apply underline decoration-2 underline-offset-2 hover:decoration-accent
+		@apply underline decoration-2 underline-offset-2 hover:decoration-accent cursor-pointer
 	}
 }
 

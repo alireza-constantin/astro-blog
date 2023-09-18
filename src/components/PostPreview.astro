@@ -1,4 +1,5 @@
 ---
+import { formatReadingTime } from "@/utils/helpers";
 import type { CollectionEntry } from "astro:content";
 interface Props {
 	post: CollectionEntry<"post">;
@@ -6,8 +7,10 @@ interface Props {
 }
 
 const { post, withDesc = false } = Astro.props;
-const { remarkPluginFrontmatter } = await post.render()
-const date = new Date(post.data.publishDate)
+const { remarkPluginFrontmatter } = await post.render();
+const readingTime = remarkPluginFrontmatter.readingTime;
+const formatedReadingTime = formatReadingTime(readingTime);
+const date = new Date(post.data.publishDate);
 const ISODate = date.toISOString();
 const formattedDate = date.toLocaleDateString("en-us", {
 	day: "numeric",
@@ -15,10 +18,19 @@ const formattedDate = date.toLocaleDateString("en-us", {
 	year: "numeric",
 });
 ---
-<time datetime={ISODate} class="min-w-[120px] text-gray-500">{formattedDate}</time>
-<div>
-	<a href={`/posts/${post.slug}/`} class="link" rel="prefetch">
-		{post.data.title}
-	</a>
+
+<h1
+	transition:name={`post-${post.data.title}`}
+	class="text-lg text-accent-2 font-extrabold mb-3 sm:mb-1"
+>
+	{post.data.title}
+</h1>
+<div class="flex items-center leading-none gap-1 font-bold">
+	<time datetime={ISODate}>{formattedDate}</time>
+	<span class="leading-none text-xl font-extralight">|</span>
+	<div class="leading-none flex items-center">
+		<span class="mr-2 leading-none font-serif">{formatedReadingTime}</span>
+		<span class="leading-none">{readingTime}</span>
+	</div>
 </div>
-{withDesc && <q class="line-clamp-3 block italic">{post.data.description}</q>}
+<p class="mt-1 pb-4 text-slate-600 dark:text-gray-400">{post.data.description}</p>

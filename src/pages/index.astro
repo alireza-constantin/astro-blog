@@ -8,7 +8,8 @@ import { HOME_MAX_POST } from "@/utils/constant";
 import ProfilePic from "@/components/intro/ProfilePic";
 import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
-import { SKILLS, LESS_FAMILIAR } from '@/utils/constant'
+import { SKILLS, LESS_FAMILIAR } from "@/utils/constant";
+import HomePostPreview from "@/components/HomePostPreview";
 
 const allPosts = await getCollection("post");
 const sortedPosts = sortPostsByDate(allPosts).slice(0, HOME_MAX_POST);
@@ -23,15 +24,15 @@ const sortedPosts = sortPostsByDate(allPosts).slice(0, HOME_MAX_POST);
 			<ProfilePic />
 		</div>
 	</section>
-	
+
 	<section aria-label="Blog post list" class="mt-16 pb-12">
 		<div>
 			<h2 class="title mb-4 text-xl">Posts</h2>
 			<ul class="space-y-4 sm:space-y-2">
 				{
 					sortedPosts.map((p) => (
-						<li class="flex flex-col gap-x-2 sm:flex-row">
-							<PostPreview post={p} />
+						<li class="flex flex-col-reverse gap-x-6 sm:flex-row">
+							<HomePostPreview post={p} />
 						</li>
 					))
 				}

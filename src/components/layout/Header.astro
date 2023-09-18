@@ -6,14 +6,16 @@ const url = new URL(Astro.request.url);
 
 <header id="main-header" class="group relative mb-12 flex justify-between items-center">
 	<div class="flex items-center justify-between">
-		<dotlottie-player
-			id="wizard"
-			src="/wizard.lottie"
-			speed="1"
-			loop="false"
-			class="bg-transparent animate-appear cursor-pointer w-32 sm:grayscale hover:filter-none -mr-6 -ml-4 md:-ml-11"
-			direction="1"
-			mode="normal"></dotlottie-player>
+		<a href="/">
+			<dotlottie-player
+				id="wizard"
+				src="/wizard.lottie"
+				speed="1"
+				loop="false"
+				class="bg-transparent animate-appear cursor-pointer w-32 sm:grayscale hover:filter-none -mr-6 -ml-4 md:-ml-11"
+				direction="1"
+				mode="normal"></dotlottie-player>
+		</a>
 		<div class="flex flex-col h-[128px] justify-center">
 			<h4 class="hidden sm:block text-xl font-bold sm:text-2xl">Alireza Soheili</h4>
 			<nav
@@ -86,31 +88,34 @@ const url = new URL(Astro.request.url);
 	</div>
 </header>
 <script>
-		const header = document.getElementById("main-header") as HTMLElement;
-		const toggleMenuButton = document.getElementById(
-			"toggle-navigation-menu"
-			) as HTMLButtonElement;
-		let menuOpen = false;
+	let headerEl: HTMLElement;
+	let menuButtonEl: HTMLButtonElement;
+	let menuOpen = false;
 
-		toggleMenuButton.addEventListener("click", () => {
-			header.classList.toggle("menu-open");
-			menuOpen = !menuOpen;
-			toggleMenuButton.setAttribute("aria-expanded", menuOpen.toString());
-		});
+	function toggleMobileMenu() {
+		headerEl.classList.toggle("menu-open");
+		menuOpen = !menuOpen;
+		menuButtonEl.setAttribute("aria-expanded", menuOpen.toString());
+	}
+
+	document.addEventListener("astro:page-load", () => {
+		headerEl = document.getElementById("main-header")!;
+		menuButtonEl = document.getElementById("toggle-navigation-menu") as HTMLButtonElement;
+		menuButtonEl.addEventListener("click", toggleMobileMenu);
+	});
+
+	//
+	document.addEventListener("astro:page-load", () => {
 		const wizardAnimation = document.getElementById("wizard") as HTMLVideoElement & {
-						stop: () => void;
+			stop: () => void;
 		};
 		if (wizardAnimation) {
 			const showStarsEvent = new CustomEvent("show-stars");
 			wizardAnimation.addEventListener("click", () => {
-				if(window.location.pathname !== "/"){
-					window.location.pathname = "/"
-					return;
-				}
 				wizardAnimation.stop();
 				wizardAnimation.play();
 				document.documentElement.dispatchEvent(showStarsEvent);
 			});
 		}
-
+	});
 </script>

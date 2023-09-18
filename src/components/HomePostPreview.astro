@@ -1,0 +1,20 @@
+---
+import type { CollectionEntry } from "astro:content";
+interface Props {
+	post: CollectionEntry<"post">;
+}
+
+const { post } = Astro.props;
+const date = new Date(post.data.publishDate);
+const ISODate = date.toISOString();
+const formattedDate = date.toLocaleDateString("en-us", {
+	day: "numeric",
+	month: "short",
+	year: "numeric",
+});
+---
+
+<time class="text-neutral-500 text-sm" datetime={ISODate}>{formattedDate}</time>
+<a href={`/posts/${post.slug}`} class="link text-opacity-60 font-extrabold mb-3 sm:mb-1">
+	{post.data.title}
+</a>
